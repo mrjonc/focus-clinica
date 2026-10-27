@@ -122,6 +122,10 @@ html {
 .main-header {
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
 }
 
 .navbar {
@@ -213,4 +217,242 @@ html {
 
 .seta-link {
   transition: transform 0.2s ease;
+}
+
+.hero-section {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-content .subtitle {
+  font-family: var(--font-corpo);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.hero-content .title {
+  font-family: var(--font-titulo);
+  font-size: 3rem;
+  line-height: 1.15;
+  color: var(--on-surface);
+  font-weight: 800;
+}
+
+.hero-content .title .detaque {
+  color: var(--primary);
+}
+
+.hero-content .description {
+  font-family: var(--font-corpo);
+  font-size: 1.05rem;
+  color: var(--outline);
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-testar {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  padding: 0.85rem 1.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--font-corpo);
+  transition: opacity 0.2s ease;
+}
+
+.btn-testar:hover {
+  opacity: 0.9;
+}
+
+.btn-plataform {
+  background-color: transparent;
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  padding: 0.85rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-family: var(--font-corpo);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-plataform:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.description-extra {
+  font-size: 0.85rem;
+  color: var(--outline);
+}
+
+.subtitle-extra {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-top: 0.25rem;
+}
+
+/* =========================================
+   IMAGEM DO MÉDICO E TAGS FLUTUANTES (CORRIGIDO)
+   ========================================= */
+.image-doctor {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.image-doctor img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 1rem;
+  object-fit: cover;
+  display: block;
+}
+
+/* Padronização das tags flutuantes para não quebrarem o layout */
+.image-doctor .tag-badge,
+.image-doctor .badge,
+.image-doctor [class*="tag"] {
+  position: absolute;
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  padding: 0.5rem 0.9rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  z-index: 2;
+  border: 1px solid var(--outline-variant);
+}
+
+/* Posicionamento individual de cada tag ao redor da imagem */
+.image-doctor .consult {
+  top: 15%;
+  left: 2%;
+}
+
+.image-doctor .satisfaction {
+  top: 8%;
+  right: 5%;
+}
+
+.image-doctor .reminder,
+.image-doctor [class*="reminder"] {
+  bottom: 22%;
+  right: -5%;
+}
+
+/* =========================================
+   01 / IMPACTO EM NÚMEROS (CORRIGIDO)
+   ========================================= */
+.metrics-overview {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem 2rem;
+}
+
+.metrics-overview .section-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.metrics-overview h2 {
+  font-family: var(--font-titulo);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--on-surface);
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  line-height: 1.25;
+}
+
+.cards-grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.metrics-overview .card {
+  background: var(--surface-container-lowest);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--outline-variant);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.metrics-overview .card:hover {
+  transform: translateY(-4px);
+}
+
+.card-results {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-results h3,
+.card-results .card-title {
+  font-family: var(--font-titulo);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.card-results img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.card-description {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--on-surface);
+}
+
+.card-description-extra {
+  font-size: 0.9rem;
+  color: var(--outline);
 }
