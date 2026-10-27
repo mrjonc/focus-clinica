@@ -3,127 +3,331 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Focus Clinica</title>
+    <title>
+      Focus Clínica - Tecnologia que organiza. Cuidado que aproxima.
+    </title>
   </head>
   <body>
-    <nav>
-      <div class="logo">
-        <img src="logo.png" alt="Logo da empresa" />
-      </div>
-
-      <div class="menu">
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="contato.html">Funcionalidades</a></li>
-          <li><a href="contato.html">Benefícios</a></li>
-          <li><a href="contato.html">Demonstração</a></li>
-          <li><a href="contato.html">Calculadora ROI</a></li>
-        </ul>
-      </div>
-      <a
-        href="https://focus-clinica.netlify.app/"
-        target="_blank"
-        class="btn-plataforma"
-        >Acessar Plataforma</a
-      >
-    </nav>
+    <!-- CABEÇALHO / NAVBAR -->
+    <header class="main-header">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="logo.png" alt="Logo Focus Clinica" />
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#funcionalidades">Funcionalidades</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#impacto">Depoimentos</a></li>
+          </ul>
+        </div>
+        <a
+          href="https://focus-clinica.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-plataforma"
+          >Acessar Plataforma</a
+        >
+      </nav>
+    </header>
     <main>
-      <section>
-        <span class="subtitle">
-          — Software de Gestão Médica de Alta Performance</span
-        >
-        <h1 class="title">
-          Cuidar de pessoas também é
-          <span class="destaque">organizar melhor</span>
-        </h1>
-        <p class="description">
-          Da primeira mensagem ao próximo atendimento: conecte agenda,
-          prontuário e finanças para sua equipe ganhar tempo e seus pacientes,
-          mais cuidado.
-        </p>
-        <button class="btn-testar">Testar grátis por 14 dias</button>
-        <button class="btn-plataform">Ver demonstração interativa</button>
-        <p class="description-extra">
-          Sem cartão de crédito. Seus dados protegidos
-        </p>
-        <span class="subtitle-extra"
-          >— Mais presença no cuidado. Menos ruído na gestão.</span
-        >
+      <!-- HERO-->
+      <section id="inicio" class="hero-section">
+        <div class="hero-content">
+          <span class="subtitle"
+            >- Software de Gestão Médica de Alta Performance</span
+          >
+          <h1 class="title">
+            Cuidar de pessoas também é
+            <span class="detaque">organizar melhor</span>
+          </h1>
+          <p class="description">
+            Da primeira mensagem ao próximo atendimento: conecte agenda,
+            prontuário e finanças para sua equipe ganhar tempo e seus pacientes,
+            mais cuidado.
+          </p>
+          <div class="hero-actions">
+            <a href="#teste-gratis" class="btn-testar">
+              Testar grátis por 14 dias</a
+            >
+            <button type="button" class="btn-plataform">
+              Ver demonstração interativa
+            </button>
+          </div>
+          <p class="description-extra">
+            Sem cartão de crédito. Seus dados protegidos
+          </p>
+          <span class="subtitle-extra">
+            - Mais presença no cuidado. Menos ruído na gestão.</span
+          >
+        </div>
+        <div class="image-doctor">
+          <img src="doctor.png" alt="Imagem de um médico" />
+          <span class="tag-badge consult">Consulta Confirmada</span>
+          <span class="tag badge satisfaction">99.8% Satisfação</span>
+          <span class="tag=badge reminder">Lembrete WhatsApp enviado</span>
+        </div>
       </section>
-      <section class="image-doctor">
-        <img src="image.png" alt="Imagem de uma médica" />
-        <span class="consult">Consulta Confirmada</span>
-        <span class="satisfaction">99.8% Satisfação</span>
-        <span class="reminder">Lembrete WhatsApp enviado</span>
-      </section>
-      <section>
-        <span class="subtitle">— 01/Impacto em números</span>
-        <p class="description-extra">
+      <!-- 01 / IMPACTO EM NÚMEROS -->
+      <section class="metrics-overview">
+        <span class="section-tag">-01 / Impacto em números</span>
+        <h2>
           Tecnologia para simplificar a rotina. Cuidado para transformar a
-          experiência.
-        </p>
-        <article class="card">
-          <div class="card-results">
-            <h3 class="card-title">+150k</h3>
-            <img src="icon1.png" alt="icon-calendar" />
-          </div>
-          <span class="card-description">Consultas agendadas</span>
-          <span class="card-description-extra"
-            >Mais conexões entre cuidado e organização.</span
-          >
-        </article>
-        <article class="card">
-          <div class="card-results">
-            <h3 class="card-title">99.8%</h3>
-            <img src="icon2.png" alt="icon-calendar" />
-          </div>
-          <span class="card-description">de satisfação dos pacientes</span>
-          <span class="card-description-extra"
-            >Uma experiência melhor em cada etapa.</span
-          >
-        </article>
-        <article class="card">
-          <div class="card-results">
-            <h3 class="card-title">45%</h3>
-            <img src="icon3.png" alt="icon-calendar" />
-          </div>
-          <span class="card-description">de redução nos faltosos</span>
-          <span class="card-description-extra"
-            >Com lembretes no Whatsapp, menos ausências.</span
-          >
-        </article>
+          experiência
+        </h2>
+        <div class="cards-grid-metrics">
+          <article class="card">
+            <div class="card-results">
+              <h3>+150k</h3>
+              <img src="icon1.png" alt="" aria-hidden="true" />
+            </div>
+            <strong class="card-description">Consultas agendadas</strong>
+            <p class="card-description-extra">
+              Mais conexões entre cuidado e organização.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-results">
+              <h3 class="card-title">99.8%</h3>
+              <img src="icon2.png" alt="" aria-hidden="true" />
+            </div>
+            <strong class="card-description"
+              >de satisfação dos pacientes</strong
+            >
+            <p class="card-description-extra">
+              Uma experiência melhor em cada etapa.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-results">
+              <h3 class="card-title">45%</h3>
+              <img src="icon3.png" alt="" aria-hidden="" />
+            </div>
+            <strong class="card-description">de redução nos faltosos</strong>
+            <p class="card-description-extra">
+              Com lembretes no WhatsApp, menos ausências
+            </p>
+          </article>
+        </div>
       </section>
-      <section>
-        <span class="subtitle">— 02/Sobre a Focus</span>
-        <h3 class="card-title">Sua vocação é cuidar. A nossa é facilitar.</h3>
+      <!-- 02 / SOBRE A FOCUS -->
+      <section id="sobre" class="about-sction">
+        <span class="section-tag">-02 / Sobre a Focus</span>
+        <h2>Sua vocação é cuidar. A nossa é facilitar.</h2>
         <p class="description-extra">
-          A rotina de uma clínica não precisa disputar atenção com seus
+          A rotina de uma clinica não precisa disputar atenção com seus
           pacientes. A Focus Clínica conecta cada detalhe para que sua equipe
           trabalhe com mais clareza e tranquilidade. Chega de informações
           espalhadas, confirmações manuais e decisões no escuro. Uma única
           plataforma, do agendamento ao resultado financeiro.
         </p>
-        <div>
-          <img src="icon4.png" alt="icon-calendar" />
-          <span class="subtitle">Antes da consulta</span>
-          <span class="card-description-extra"
-            >Agenda organizada e paciente bem informado.</span
-          >
+        <div class="timeline-grid">
+          <div class="timeline-item">
+            <img src="icon4.png" alt="" aria-hidden="true" />
+            <h3>Antes da consulta</h3>
+            <p>Agenda organiada e paciente bem informado.</p>
+          </div>
+          <div class="timeline-item">
+            <img src="icon5.png" alt="" aria-hidden="true" />
+            <h3>Durante o cuidado</h3>
+            <p>Histórico acessível e prontuário por especialidade.</p>
+          </div>
+          <div class="timeline-item">
+            <img src="icon6.png" alt="" aria-hidden="true" />
+            <h3>Depois do atendimento</h3>
+            <p>Gestão financeira e indicadores em um só lugar.</p>
+          </div>
         </div>
-        <div>
-          <img src="icon5.png" alt="icon-calendar" />
-          <span class="subtitle">Durante o cuidado</span>
-          <span class="card-description-extra"
-            >Histórico acessível e prontuário por especialidade.</span
-          >
+      </section>
+
+      <!-- 03 / TUDO CONECTADO -->
+      <section id="funcionalidades" class="overview-section">
+        <header class="section-header">
+          <span class="section-tag">- 03 / TUDO CONECTADO</span>
+          <h2>Uma plataforma. Toda a sua clínica.</h2>
+          <p>
+            Cada etapa da jornada, conectada em uma experiência simples para
+            quem cuida e para quem é cuidado.
+          </p>
+        </header>
+        <nav class="features-nav" aria-label="Navegação de funcionalidades">
+          <button type="button" class="nav-item active">
+            Agenda inteligente e calendário
+          </button>
+          <button type="button" class="nav-item">
+            Lembretes e notificações via WhatsApp
+          </button>
+          <button type="button" class="nav-item">
+            Prontuário eletrônico e especialidades
+          </button>
+          <button type="button" class="nav-item">
+            Gestão financeira e relatórios
+          </button>
+        </nav>
+        <div class="feature-detail">
+          <div class="feature-text">
+            <span class="sub-tag">AGENDA INTELIGENTE</span>
+            <h3>Cada horário no lugar. Cada paciente no centro.</h3>
+            <p>
+              Visualize a rotina de todos os profissionais, encontre encaixes e
+              acompanhe confirmações sem alternar entre planilhas e mensagens.
+            </p>
+            <ul class="check-list">
+              <li>Visões por dia, semana e profissional</li>
+              <li>Status e disponibilidade em tempo real</li>
+              <li>Encaixes, retornos e bloqueios organizados</li>
+            </ul>
+          </div>
+
+          <div class="feature-preview">
+            <img
+              src="agenda-preview.png"
+              alt="Demonstração da interface da agenda inteligente"
+            />
+          </div>
         </div>
-        <div>
-          <img src="icon6.png" alt="icon-graphic" />
-          <span class="subtitle">Depois do atendimento</span>
-          <span class="card-description-extra"
-            >Gestão financeira e indicadores em um só lugar.</span
+
+        <div class="cards-grid">
+          <article class="card">
+            <h4>Lembretes que aproximam</h4>
+            <p>
+              Confirmações automáticas e avisos no WhatsApp, sem sobrecarregar a
+              recepção
+            </p>
+          </article>
+
+          <article class="card">
+            <h4>Histórias, não só registros</h4>
+            <p>
+              Tipos de consulta e prontuários - histórico, evolução e gestão por
+              especialidade.
+            </p>
+          </article>
+
+          <article class="card">
+            <h4>Clareza para crescer</h4>
+            <p>
+              Receitas, repasses e relatórios que transformam números em
+              decisões mais seguras.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 04 / MÓDULOS E ESPECIALIDADES -->
+      <section id="especialidades" class="modules-section">
+        <header class="section-header">
+          <span class="section-tag">- 04 / MÓDULOS E ESPECIALIDADES</span>
+          <h2>
+            Sua Clínica estrutura por especialidades. Cada atendimento no seu
+            lugar
+          </h2>
+          <p>
+            Cadastre e personalize todas as especialidades médicas da sua
+            clínica (Pediatria, Dermatologia, Cardiologia, Psicologia, Nutrção,
+            etc.).
+          </p>
+        </header>
+
+        <div class="modulos-preview">
+          <img
+            src="especialidades.png"
+            alt="Visualização do módulo de tipos de consulta e especialidades da plataforma"
+          />
+          <p class="preview-note">
+            Prévia visual sem ações funcionais. Para conhecer o fluxo completo
+            da plataforma, solicite uma demonstração com nossa equipe.
+          </p>
+        </div>
+      </section>
+
+      <!-- 05 / BENEFÍCIOS NA PRÁTICA -->
+      <section id="beneficios" class="comparison-section">
+        <header class="section=header">
+          <span class="section-tag">- 05 / BENEFÍCIOS NA PRÁTICA</span>
+          <h2>Mude a gestão. Preserve o que importa.</h2>
+          <p>
+            A diferença está no tempo que sua equipe recupera- e na atenção que
+            seus pacientes recebem.
+          </p>
+        </header>
+
+        <div class="comparison-container">
+          <div class="comparison-card traditional">
+            <h3>Gestão tradicional</h3>
+            <ul>
+              <li>Agenda em planilhas e cadernos</li>
+              <li>Confirmações manuais, uma a uma</li>
+              <li>Histórico disperso e difícil de encontrar</li>
+              <li>Faltas sem acompanhamento</li>
+              <li>Financeiro fechado no fim do mês</li>
+              <li>Equipe ocupada com tarefas repetitivas</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card automation highlight">
+            <span class="badge">RECOMENDADO</span>
+            <h3>Automação Focus Clínica</h3>
+            <ul>
+              <li>Agenda unificada por profissional</li>
+              <li>Lembretes automáticos via WhatsApp</li>
+              <li>Prontuário centralizado por especialidade</li>
+              <li>Status e confirmações organizados</li>
+              <li>Indicadores financeiros sempre à mão</li>
+              <li>Mais tempo para acolher cadqa paciente</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 / O IMPACTO DO CUIDADO ORGANIZADO -->
+      <section id="impacto" class="impact-section">
+        <header class="section-header">
+          <span class="section-tag">
+            - 06 / O IMPACTO DO CUIDADO ORGANIZADO</span
           >
+          <h2>Mais leveza na rotina. Mais espaço para crescer.</h2>
+          <p>
+            Veja como uma rotina conectada pode transformar a experiência de uma
+            clínica.
+          </p>
+        </header>
+
+        <div class="impacto-grid">
+          <article class="testimonial-card">
+            <span class="quote-tag"
+              >DEPOIMENTOS DOS PROFISSIONAIS QUE ADOTARAM NOSSO SISTEMA</span
+            >
+            <blockquote>
+              "Antes, a gestão tomava o tempo que eu queria dedicar aos
+              pacientes. Hoje, a equipe tem clareza da rotina e eu posso estar
+              mais presente em cada consulta."
+            </blockquote>
+
+            <div class="author-info">
+              <img src="dra-ana.jpg" alt="Foto da Dra. Ana" />
+              <div>
+                <strong>Dra. Ana Costa</strong>
+                <span>Clínica Aurora</span>
+              </div>
+            </div>
+            <div class="audio-player">
+              <button type="button" aria-label="Tocar áudio de depoimento">
+                Play
+              </button>
+              <div class="waveform"></div>
+              <span class="duration">0:18 / 08:42</span>
+            </div>
+          </article>
+
+          <article class="metrics-card">
+            <span class="metrics-tag">MÉTRICAS BASEADAS EM ATENDIMENTOS</span>
+          </article>
         </div>
       </section>
     </main>
