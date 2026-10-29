@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/style.css?v=20261029-nav5" />
+    <script src="src/js/navigation.js?v=20261029-nav5" defer></script>
     <script src="src/js/roi-calculator.js" defer></script>
-    <script src="src/js/page-effects.js" defer></script>
+    <script src="src/js/page-effects.js?v=20261029-counters4" defer></script>
     <title>
       Focus Clínica - Tecnologia que organiza. Cuidado que aproxima.
     </title>
@@ -20,6 +21,10 @@
           </div>
           <span class="logo-text"> <strong>Focus</strong> Clínica </span>
         </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Abrir menu de navegação" hidden>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+        <div class="navbar-links" id="navbar-links">
         <div class="menu">
           <ul>
             <li><a href="#inicio">Início</a></li>
@@ -55,6 +60,7 @@
             <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </a>
+        </div>
       </nav>
     </header>
     <main>
