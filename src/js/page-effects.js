@@ -5,6 +5,7 @@
   const counters = [...document.querySelectorAll("[data-count]")];
   const duration = 1500; // Duração da contagem em milissegundos.
   const counted = new WeakSet();
+  const countFrames = new WeakMap();
 
   function measure() {
     const rem = parseFloat(getComputedStyle(root).fontSize);
@@ -127,9 +128,16 @@
   const countObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const element = entry.target;
-      if (!entry.isIntersecting || entry.intersectionRatio < 0.5 || counted.has(element)) return;
+      if (!entry.isIntersecting) {
+        const frame = countFrames.get(element);
+        if (frame !== undefined) cancelAnimationFrame(frame);
+        countFrames.delete(element);
+        counted.delete(element);
+        element.textContent = format(element, 0);
+        return;
+      }
+      if (entry.intersectionRatio < 0.5 || counted.has(element)) return;
       counted.add(element);
-      countObserver.unobserve(element);
       const card = element.closest(".card");
       const delay = card ? parseFloat(getComputedStyle(card).getPropertyValue("--reveal-delay")) || 0 : 0;
       const start = performance.now() + delay;
@@ -137,9 +145,10 @@
         const progress = Math.max(0, Math.min(1, (now - start) / duration));
         const eased = 1 - Math.pow(1 - progress, 3);
         element.textContent = format(element, Number(element.dataset.count) * eased);
-        if (progress < 1) requestAnimationFrame(tick);
+        if (progress < 1) countFrames.set(element, requestAnimationFrame(tick));
+        else countFrames.delete(element);
       };
-      requestAnimationFrame(tick);
+      countFrames.set(element, requestAnimationFrame(tick));
     });
   }, { threshold: [0, 0.5] });
 
