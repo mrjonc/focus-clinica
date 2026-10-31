@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/style.css?v=20261029-nav5" />
-    <script src="src/js/navigation.js?v=20261029-nav5" defer></script>
-    <script src="src/js/roi-calculator.js" defer></script>
-    <script src="src/js/page-effects.js?v=20261029-counters4" defer></script>
+    <link rel="stylesheet" href="src/css/style.css?v=20261031-clean2" />
+    <link rel="stylesheet" href="src/css/responsive.css?v=20261031-clean2" />
+    <script src="src/js/navigation.js?v=20261031-ui1" defer></script>
+    <script src="src/js/roi-calculator.js?v=20261031-about1" defer></script>
+    <script src="src/js/page-effects.js?v=20261031-ui1" defer></script>
     <title>
       Focus Clínica - Tecnologia que organiza. Cuidado que aproxima.
     </title>
@@ -21,45 +22,37 @@
           </div>
           <span class="logo-text"> <strong>Focus</strong> Clínica </span>
         </div>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Abrir menu de navegação" hidden>
-          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navbar-links"
+          aria-label="Abrir menu de navegação"
+          hidden
+        >
+          <span aria-hidden="true"></span><span aria-hidden="true"></span
+          ><span aria-hidden="true"></span>
         </button>
         <div class="navbar-links" id="navbar-links">
-        <div class="menu">
-          <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#funcionalidades">Funcionalidades</a></li>
-            <li><a href="#beneficios">Benefícios</a></li>
-            <li><a href="#especialidades">Demonstração</a></li>
-            <li><a href="#calculadora-roi">Calculadora ROI</a></li>
-          </ul>
-        </div>
-        <a
-          href="https://focus-clinica.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-plataforma"
-        >
-          Acessar Plataforma
-          <svg
-            class="seta-link"
-            aria-hidden="true"
-            focusable="false"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="18"
-            height="18"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+          <div class="menu">
+            <ul>
+              <li><a href="#inicio">Início</a></li>
+              <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#funcionalidades">Funcionalidades</a></li>
+              <li><a href="#beneficios">Benefícios</a></li>
+              <li><a href="#especialidades">Demonstração</a></li>
+              <li><a href="#calculadora-roi">Calculadora ROI</a></li>
+            </ul>
+          </div>
+          <a
+            href="https://focus-clinica.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-plataforma"
           >
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+            Acessar Plataforma
+            <svg class="seta-link" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="assets/icons/sprite.svg#arrow-up-right"></use></svg>
+          </a>
         </div>
       </nav>
     </header>
@@ -68,11 +61,7 @@
       <section id="inicio" class="hero-section">
         <div class="hero-content">
           <span class="subtitle">
-            <img
-              class="subtitle-line"
-              src="assets/img/subtitle-line.png"
-              alt=""
-            />
+            <span class="subtitle-line" aria-hidden="true"></span>
             Software de Gestão Médica de Alta Performance
           </span>
           <h1 class="title">
@@ -90,23 +79,7 @@
           <div class="hero-actions">
             <a href="#teste-gratis" class="btn-testar">
               Testar grátis por 14 dias
-              <svg
-                class="seta-link"
-                aria-hidden="true"
-                focusable="false"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
+              <svg class="seta-link" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="assets/icons/sprite.svg#arrow-up-right"></use></svg>
             </a>
             <button type="button" class="btn-demonstracao">
               Ver demonstração interativa
@@ -129,35 +102,20 @@
             Sem cartão de crédito · Seus dados protegidos
           </p>
           <span class="subtitle-extra">
-            <img
-              class="subtitle-line"
-              src="assets/img/subtitle-line.png"
-              alt=""
-            />
+            <span class="subtitle-line" aria-hidden="true"></span>
             Mais presença no cuidado. Menos ruído na gestão.</span
           >
         </div>
         <div class="image-doctor">
           <img src="assets/img/doctor.png" alt="Imagem de uma médica" />
           <span class="tag-badge consult"
-            ><svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="m8 12 3 3 5-6" /></svg
-            >Consulta Confirmada</span
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#check-confirmation"></use></svg>Consulta Confirmada</span
           >
           <span class="tag-badge satisfaction"
-            ><svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"
-              /></svg
-            >99.8% Satisfação</span
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#heart"></use></svg>99.8% Satisfação</span
           >
           <span class="tag-badge reminder"
-            ><svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z"
-              /></svg
-            >Lembrete WhatsApp enviado</span
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#message-circle"></use></svg>Lembrete WhatsApp enviado</span
           >
           <article
             class="product-preview"
@@ -170,7 +128,7 @@
                   >Segunda-feira, 15 de setembro de 2026</time
                 >
               </div>
-              <span aria-hidden="true">•••</span>
+              <span class="preview-status">Sistema operacional</span>
             </header>
             <dl class="preview-indicators">
               <div>
@@ -186,13 +144,20 @@
                 <dd>5 <span>Consultas realizadas</span></dd>
               </div>
               <div>
-                <dt>Receita prevista</dt>
-                <dd>R$7,2 mil</dd>
+                <dt>Agendar nova consulta</dt>
+                <dd>NOVO <span>Marcar consulta com especialista</span></dd>
               </div>
             </dl>
             <div class="preview-panels">
               <section class="preview-calendar" aria-label="Agenda ilustrativa">
-                <h3>Outubro 2026 <span>Semana⌄</span></h3>
+                <h3>Calendário</h3>
+                <div class="preview-calendar-toolbar">
+                  <span>Outubro 2026</span>
+                  <span class="preview-calendar-controls" aria-hidden="true">
+                    <span>‹</span><span>›</span
+                    ><span class="preview-today">Hoje</span>
+                  </span>
+                </div>
                 <div class="preview-week">
                   <span>SEG<b>19</b></span
                   ><span class="selected">TER<b>20</b></span
@@ -210,7 +175,7 @@
                 <p>
                   <span class="notification-dot" aria-hidden="true">•</span
                   ><span
-                    ><strong>Consulta confirmada</strong>João Pereira, 20/10 .
+                    ><strong>Consulta confirmada</strong>João Pereira · 20/10 ·
                     Pediatria</span
                   >
                 </p>
@@ -220,8 +185,8 @@
                     aria-hidden="true"
                     >•</span
                   ><span
-                    ><strong>Nova consulta agendada</strong>Marina Silva, 23/10
-                    . Clínica geral</span
+                    ><strong>Nova consulta agendada</strong>Marina Silva · 23/10
+                    · Clínica geral</span
                   >
                 </p>
               </section>
@@ -353,19 +318,7 @@
           aria-labelledby="roi-title"
         >
           <header class="roi-header">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <rect x="5" y="2" width="14" height="20" rx="2" />
-              <path d="M8 6h8M8 10h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2" />
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calculator"></use></svg>
             <div>
               <h3 id="roi-title">Quanto vale o seu tempo?</h3>
               <p>Calculadora ROI · Simulação mensal</p>
@@ -374,7 +327,9 @@
           <div class="roi-field">
             <div class="roi-label">
               <label for="roi-doctors">Número de médicos</label
-              ><output for="roi-doctors" id="roi-doctors-value">3</output>
+              ><output for="roi-doctors" id="roi-doctors-value"
+                >3 médicos</output
+              >
             </div>
             <input
               id="roi-doctors"
@@ -385,26 +340,28 @@
               value="3"
             />
             <div class="roi-range-limits">
-              <span>1 médico</span><span>10 médicos</span>
+              <span id="roi-doctors-min">1 médico</span
+              ><span id="roi-doctors-max">10 médicos</span>
             </div>
           </div>
           <div class="roi-field">
             <div class="roi-label">
               <label for="roi-consultations">Consultas por dia</label
               ><output for="roi-consultations" id="roi-consultations-value"
-                >12 / médico</output
+                >12 por médico</output
               >
             </div>
             <input
               id="roi-consultations"
               name="consultations"
               type="range"
-              min="4"
+              min="1"
               max="24"
               value="12"
             />
             <div class="roi-range-limits">
-              <span>4 consultas</span><span>24 consultas</span>
+              <span id="roi-consultations-min">1 consulta</span
+              ><span id="roi-consultations-max">24 consultas</span>
             </div>
           </div>
           <div class="roi-results" aria-live="polite" aria-atomic="true">
@@ -412,7 +369,7 @@
               <output id="roi-hours" for="roi-doctors roi-consultations"
                 >39,6 h</output
               >
-              <p>economizadas por mês</p>
+              <p id="roi-hours-description">economizadas por mês</p>
             </div>
             <div>
               <output id="roi-revenue" for="roi-doctors roi-consultations"
@@ -449,32 +406,16 @@
         </header>
         <nav class="features-nav" aria-label="Navegação de funcionalidades">
           <button type="button" class="nav-item active">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="5" width="16" height="16" rx="2" />
-              <path
-                d="M8 3v4m8-4v4M4 11h16m-12 4h.01M12 15h.01M16 15h.01M8 18h.01M12 18h.01"
-              /></svg
-            ><span>Agenda inteligente e calendário</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar-days"></use></svg><span>Agenda inteligente e calendário</span>
           </button>
           <button type="button" class="nav-item">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z"
-              /></svg
-            ><span>Lembretes e notificações via WhatsApp</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#message-circle"></use></svg><span>Lembretes e notificações via WhatsApp</span>
           </button>
           <button type="button" class="nav-item">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="5" y="5" width="14" height="16" rx="2" />
-              <path d="M9 5V3h6v2m-3 5v6m-3-3h6" /></svg
-            ><span>Prontuário eletrônico e especialidades</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#clipboard-plus"></use></svg><span>Prontuário eletrônico e especialidades</span>
           </button>
           <button type="button" class="nav-item">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M4 20v-5m5 5v-8m5 8v-5m5 5V9M3 11l6-6 5 4 7-7m-5 0h5v5"
-              /></svg
-            ><span>Gestão financeira e relatórios</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#chart-growth"></use></svg><span>Gestão financeira e relatórios</span>
           </button>
         </nav>
         <div class="feature-detail">
@@ -486,9 +427,15 @@
               acompanhe confirmações sem alternar entre planilhas e mensagens.
             </p>
             <ul class="check-list">
-              <li>Visões por dia, semana e profissional</li>
-              <li>Status e disponibilidade em tempo real</li>
-              <li>Encaixes, retornos e bloqueios organizados</li>
+              <li>
+                <svg class="feature-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#circle-check"></use></svg>Visões por dia, semana e profissional
+              </li>
+              <li>
+                <svg class="feature-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#circle-check"></use></svg>Status e disponibilidade em tempo real
+              </li>
+              <li>
+                <svg class="feature-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#circle-check"></use></svg>Encaixes, retornos e bloqueios organizados
+              </li>
             </ul>
           </div>
 
@@ -496,145 +443,278 @@
             class="feature-preview"
             aria-label="Prévia ilustrativa dos agendamentos"
           >
-            <header class="schedule-header">
-              <div>
-                <h4>Agendamentos</h4>
-                <p>Visualize e organize as consultas da sua clínica.</p>
+            <div class="schedule-dashboard">
+              <aside
+                class="dashboard-sidebar"
+                aria-label="Menu ilustrativo da plataforma"
+              >
+                <div class="dashboard-brand">
+                  <img src="assets/img/focuslogo.png" alt="" />
+                  <div>
+                    <strong>Focus <span>Clínica</span></strong
+                    ><small>Sistema clínico</small>
+                  </div>
+                </div>
+                <span class="dashboard-menu-label">Menu</span>
+                <div class="dashboard-menu-item">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#house"></use></svg>Home
+                </div>
+                <div class="dashboard-menu-item active">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar-days"></use></svg>Agendamentos <span aria-hidden="true">•</span>
+                </div>
+                <div class="dashboard-menu-item">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#stethoscope"></use></svg>Tipos de consulta
+                </div>
+                <div class="dashboard-menu-item">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#settings"></use></svg>Configurações
+                </div>
+                <div class="dashboard-sidebar-profile">
+                  <div class="dashboard-person">
+                    <span class="dashboard-avatar" aria-hidden="true">FT</span>
+                    <div><strong>Focus Tech</strong><small>Usuário</small></div>
+                  </div>
+                  <span class="dashboard-signout"
+                    ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#log-out"></use></svg> <span>Sair da conta</span></span
+                  >
+                </div>
+              </aside>
+              <div class="dashboard-workspace">
+                <div class="dashboard-topbar">
+                  <span class="dashboard-date">Qui., 10 set. 2026</span>
+                  <span
+                    class="dashboard-tool"
+                    aria-label="Tema escuro ilustrativo"
+                    ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#moon"></use></svg></span>
+                  <span
+                    class="dashboard-tool"
+                    aria-label="Notificações ilustrativas"
+                    ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#bell"></use></svg></span>
+                  <div class="dashboard-account dashboard-person">
+                    <span class="dashboard-avatar" aria-hidden="true">FT</span>
+                    <div><strong>Focus Tech</strong><small>Usuário</small></div>
+                    <svg class="dashboard-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#chevron-down"></use></svg>
+                  </div>
+                </div>
+                <div class="dashboard-content">
+                  <header class="schedule-header">
+                    <div>
+                      <h4>Agendamentos</h4>
+                      <p>Visualize e organize as consultas da sua clínica.</p>
+                    </div>
+                    <span class="schedule-new">+ Novo atendimento</span>
+                  </header>
+                  <div class="schedule-banner">
+                    <span class="schedule-calendar-icon"
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar"></use></svg></span>
+                    <div>
+                      <strong>Consultar agenda completa</strong>
+                      <p>
+                        Veja a agenda dos profissionais, filtre por data e
+                        horário
+                      </p>
+                    </div>
+                    <svg class="schedule-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#chevron-right"></use></svg>
+                  </div>
+                  <div
+                    class="schedule-table-scroll"
+                    tabindex="0"
+                    role="region"
+                    aria-label="Consultas de hoje"
+                  >
+                    <header class="schedule-table-heading">
+                      <h5>Consultas de hoje <span>4</span></h5>
+                      <span>Ver todas</span>
+                    </header>
+                    <table class="schedule-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Paciente</th>
+                          <th scope="col">Profissional</th>
+                          <th scope="col">Especialidade</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">09:30</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >FT</span
+                              ><span
+                                >Maria<br />
+                                Silva</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dra. Ana Souza</td>
+                          <td>Pediatria</td>
+                          <td>
+                            <span class="schedule-status confirmed"
+                              >Confirmado</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">11:00</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >JP</span
+                              ><span
+                                >João<br />
+                                Pereira</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dra. Ana Souza</td>
+                          <td>Pediatria</td>
+                          <td>
+                            <span class="schedule-status pending"
+                              >Pendente</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">13:30</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >LA</span
+                              ><span
+                                >Lucas<br />
+                                Almeida</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dra. Ana Souza</td>
+                          <td>Pediatria</td>
+                          <td>
+                            <span class="schedule-status confirmed"
+                              >Confirmado</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">16:00</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >FL</span
+                              ><span
+                                >Fernanda<br />
+                                Lima</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dra. Beatriz Alves</td>
+                          <td>Dermatologia</td>
+                          <td>
+                            <span class="schedule-status cancelled"
+                              >Cancelado</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div
+                    class="schedule-table-scroll"
+                    tabindex="0"
+                    role="region"
+                    aria-label="Consultas realizadas"
+                  >
+                    <header class="schedule-table-heading">
+                      <h5>Consultas realizadas <span>12</span></h5>
+                      <span>Ver todas</span>
+                    </header>
+                    <table class="schedule-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Paciente</th>
+                          <th scope="col">Profissional</th>
+                          <th scope="col">Especialidade</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">08:00</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >CM</span
+                              ><span
+                                >Carlos<br />
+                                Mendes</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dr. Rafael Lima</td>
+                          <td>Clínica Geral</td>
+                          <td>
+                            <span class="schedule-status completed"
+                              >Finalizado</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">10:30</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >JC</span
+                              ><span
+                                >Juliana<br />
+                                Costa</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dra. Beatriz Alves</td>
+                          <td>Psicologia</td>
+                          <td>
+                            <span class="schedule-status completed"
+                              >Finalizado</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">14:00</th>
+                          <td>
+                            <span class="schedule-patient"
+                              ><span class="dashboard-avatar" aria-hidden="true"
+                                >PS</span
+                              ><span
+                                >Pedro<br />
+                                Santos</span
+                              ></span
+                            >
+                          </td>
+                          <td>Dr. Carlos Mendes</td>
+                          <td>Pediatria</td>
+                          <td>
+                            <span class="schedule-status completed"
+                              >Finalizado</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p class="schedule-note">
+                    Ambiente de exemplo · Dados fictícios
+                  </p>
+                </div>
               </div>
-              <span class="schedule-new">+ Novo atendimento</span>
-            </header>
-            <div class="schedule-banner">
-              <span class="schedule-calendar-icon"
-                ><svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="5" width="16" height="16" rx="2" />
-                  <path d="M8 3v4m8-4v4M4 10h16" /></svg
-              ></span>
-              <div>
-                <strong>Consultar agenda completa</strong>
-                <p>
-                  Veja a agenda dos profissionais, filtre por data e horário
-                </p>
-              </div>
-              <span class="schedule-chevron" aria-hidden="true">›</span>
             </div>
-            <div
-              class="schedule-table-scroll"
-              tabindex="0"
-              role="region"
-              aria-label="Para 20/10"
-            >
-              <table class="schedule-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Para 20/10</th>
-                    <th scope="col">Paciente</th>
-                    <th scope="col">Profissional</th>
-                    <th scope="col">Especialidade</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">09:30</th>
-                    <td>Maria Silva</td>
-                    <td>Dra. Ana Souza</td>
-                    <td>Pediatria</td>
-                    <td>
-                      <span class="schedule-status confirmed">Confirmado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">11:00</th>
-                    <td>João Pereira</td>
-                    <td>Dra. Ana Souza</td>
-                    <td>Pediatria</td>
-                    <td>
-                      <span class="schedule-status pending">Pendente</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">13:30</th>
-                    <td>Lucas Almeida</td>
-                    <td>Dra. Ana Souza</td>
-                    <td>Pediatria</td>
-                    <td>
-                      <span class="schedule-status confirmed">Confirmado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">16:00</th>
-                    <td>Fernanda Lima</td>
-                    <td>Dra. Beatriz Alves</td>
-                    <td>Dermatologia</td>
-                    <td>
-                      <span class="schedule-status cancelled">Cancelado</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="schedule-table-scroll"
-              tabindex="0"
-              role="region"
-              aria-label="Realizadas 12"
-            >
-              <table class="schedule-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Realizadas 12</th>
-                    <th scope="col">Paciente</th>
-                    <th scope="col">Profissional</th>
-                    <th scope="col">Especialidade</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">08:00</th>
-                    <td>Carlos Mendes</td>
-                    <td>Dr. Rafael Lima</td>
-                    <td>Clínica Geral</td>
-                    <td>
-                      <span class="schedule-status completed">Finalizado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">10:30</th>
-                    <td>Juliana Costa</td>
-                    <td>Dra. Beatriz Alves</td>
-                    <td>Psicologia</td>
-                    <td>
-                      <span class="schedule-status completed">Finalizado</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">14:00</th>
-                    <td>Pedro Santos</td>
-                    <td>Dr. Carlos Mendes</td>
-                    <td>Pediatria</td>
-                    <td>
-                      <span class="schedule-status completed">Finalizado</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="schedule-note">Ambiente de exemplo · Dados fictícios</p>
           </div>
         </div>
 
         <div class="cards-grid connected-cards">
           <article class="card">
-            <svg
-              class="connected-card-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z"
-              />
-            </svg>
+            <svg class="connected-card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#message-circle"></use></svg>
             <h4>Lembretes que aproximam</h4>
             <p>
               Lembretes de consulta — Confirmações automáticas e avisos no
@@ -649,14 +729,7 @@
             </div>
           </article>
           <article class="card">
-            <svg
-              class="connected-card-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <rect x="5" y="5" width="14" height="16" rx="2" />
-              <path d="M9 5V3h6v2m-3 5v6m-3-3h6" />
-            </svg>
+            <svg class="connected-card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#clipboard-plus"></use></svg>
             <h4>Histórias, não só registros</h4>
             <p>
               Tipos de consulta e prontuários — Histórico, evolução e gestão por
@@ -671,15 +744,7 @@
             </div>
           </article>
           <article class="card">
-            <svg
-              class="connected-card-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 20v-5m5 5v-8m5 8v-5m5 5V9M3 11l6-6 5 4 7-7m-5 0h5v5"
-              />
-            </svg>
+            <svg class="connected-card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#chart-growth"></use></svg>
             <h4>Clareza para crescer</h4>
             <p>
               Receitas, repasses e relatórios que transformam números em
@@ -722,10 +787,7 @@
             <span class="browser-dots" aria-hidden="true"
               ><i></i><i></i><i></i></span
             ><span>app.focusclinica.com.br/agenda</span
-            ><svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="6" y="10" width="12" height="11" rx="1" />
-              <path d="M9 10V6a3 3 0 0 1 6 0v4m-3 4v3" />
-            </svg>
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#lock-square"></use></svg>
           </div>
           <div class="module-app">
             <aside
@@ -737,31 +799,16 @@
                 <p><strong>Focus</strong> Clínica</p>
               </div>
               <span class="module-menu-item"
-                ><svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m3 11 9-8 9 8M5 9v12h5v-7h4v7h5V9" /></svg
-                >Home</span
+                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#house"></use></svg>Home</span
               >
               <span class="module-menu-item"
-                ><svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="5" width="16" height="16" rx="2" />
-                  <path d="M8 3v4m8-4v4M4 11h16" /></svg
-                >Agendamentos</span
+                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#calendar-days"></use></svg>Agendamentos</span
               >
               <span class="module-menu-item selected"
-                ><svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M5 3v5a5 5 0 0 0 10 0V3M3 3h4m6 0h4m-7 10v3a5 5 0 0 0 10 0v-3"
-                  />
-                  <circle cx="20" cy="11" r="2" /></svg
-                >Tipos de consulta</span
+                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#stethoscope"></use></svg>Tipos de consulta</span
               >
               <span class="module-menu-item"
-                ><svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="m10 3-1 3-3 1-3-1-2 4 3 2v3l-2 2 3 4 3-1 3 1 1 2 4-1v-3l2-2 3-1-1-4-3-1-1-3Z"
-                  />
-                  <circle cx="12" cy="12" r="3" /></svg
-                >Configurações</span
+                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#settings"></use></svg>Configurações</span
               >
               <div class="module-account">
                 <div>
@@ -769,9 +816,7 @@
                   <p>Focus Tech<small>Usuário</small></p>
                 </div>
                 <span class="module-signout"
-                  ><svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 4H4v16h5m5-12 4 4-4 4m-6-4h10" /></svg
-                  >Sair da conta</span
+                  ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#log-out"></use></svg>Sair da conta</span
                 >
               </div>
             </aside>
@@ -783,16 +828,9 @@
                 </div>
                 <div class="module-display-options">
                   <span
-                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20 14A9 9 0 0 1 10 4a8 8 0 1 0 10 10Z" /></svg
-                    >Claro</span
+                    ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#moon"></use></svg>Claro</span
                   ><span
-                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                      <circle cx="12" cy="12" r="4" />
-                      <path
-                        d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"
-                      /></svg
-                    >Padrão</span
+                    ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#sun"></use></svg>Padrão</span
                   >
                 </div>
               </header>
@@ -800,9 +838,7 @@
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="12" cy="7" r="3" />
-                        <path d="M6 21v-3a6 6 0 0 1 12 0v3Z" /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#user-round"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Pediatria</h4>
@@ -818,16 +854,12 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="5" y="6" width="14" height="15" rx="1" />
-                        <path d="M9 6V3h6v3m-3 5v6m-3-3h6" /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#clipboard"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Clínica Geral</h4>
@@ -844,18 +876,12 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M20 5c-3-3-6-1-8 1-2-2-5-4-8-1s-1 7 8 15C21 12 23 8 20 5Z"
-                        />
-                        <path d="M3 11h5l2-3 3 7 2-4h5" /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#heart-pulse"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Cardiologia</h4>
@@ -869,18 +895,12 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M12 22S5 13 5 9a7 7 0 0 1 14 0c0 4-7 13-7 13Z"
-                        />
-                        <circle cx="12" cy="9" r="2" /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#map-pin"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Dermatologia</h4>
@@ -894,17 +914,12 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M8 16c0-4-3-4-3-8a7 7 0 0 1 14 0c0 4-3 4-3 8m-8 0h8m-7 3h6m-5 3h4"
-                        /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#lightbulb"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Psicologia</h4>
@@ -918,17 +933,12 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
                 <article class="module-specialty-card">
                   <div class="module-card-top">
                     <span class="module-specialty-icon"
-                      ><svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M3 19h15M4 15h12M5 11h10M3 22h15M6 7h9m4-5v20m-4-15 4-3 3 2"
-                        /></svg></span
+                      ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#nutrition"></use></svg></span
                     ><span class="module-available">Disponível</span>
                   </div>
                   <h4>Nutrição</h4>
@@ -945,19 +955,14 @@
                   </div>
                   <span class="module-learn-more"
                     >Conhecer mais
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 12h16m-6-6 6 6-6 6" /></svg
-                  ></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
                 </article>
               </div>
             </div>
           </div>
         </div>
         <p class="preview-note">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 11v6m0-10v1" /></svg
-          ><span
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#info"></use></svg><span
             >Prévia visual sem ações funcionais. Para conhecer o fluxo completo
             da plataforma, solicite uma demonstração com nossa equipe.</span
           >
@@ -977,7 +982,9 @@
 
         <div class="comparison-container">
           <div class="comparison-card traditional">
-            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6l5 5v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v6h6M5 8H4a2 2 0 0 0-2 2v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1"/></svg>Gestão tradicional</h3>
+            <h3>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#files"></use></svg>Gestão tradicional
+            </h3>
             <ul>
               <li>Agenda em planilhas e cadernos</li>
               <li>Confirmações manuais, uma a uma</li>
@@ -990,7 +997,9 @@
 
           <div class="comparison-card automation highlight">
             <span class="badge">RECOMENDADO</span>
-            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 2 2.3 7.7L20 12l-7.7 2.3L10 22l-2.3-7.7L0 12l7.7-2.3L10 2ZM20 1v6m-3-3h6M21 17v5m-2.5-2.5h5"/></svg>Automação Focus Clínica</h3>
+            <h3>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#sparkles"></use></svg>Automação Focus Clínica
+            </h3>
             <ul>
               <li>Agenda unificada por profissional</li>
               <li>Lembretes automáticos via WhatsApp</li>
@@ -1006,9 +1015,7 @@
       <!-- 06 / O IMPACTO DO CUIDADO ORGANIZADO -->
       <section id="impacto" class="impact-section">
         <header class="section-header">
-          <span class="section-tag">
-            06 / O IMPACTO DO CUIDADO ORGANIZADO</span
-          >
+          <span class="section-tag"> 06 / O IMPACTO DO CUIDADO ORGANIZADO</span>
           <h2>Mais leveza na rotina. Mais espaço para crescer.</h2>
           <p>
             Veja como uma rotina conectada pode transformar a experiência de uma
@@ -1035,14 +1042,28 @@
               </div>
             </div>
             <div class="audio-player">
-              <button type="button" aria-label="Prévia do player de depoimento" disabled>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+              <button
+                type="button"
+                aria-label="Prévia do player de depoimento"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#play"></use></svg>
               </button>
-              <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="waveform" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
               <span class="duration">0:18 / 0:42</span>
             </div>
             <span class="audio-caption">Ativar reprodução</span>
-            <div class="testimonial-navigation" aria-hidden="true"><span class="testimonial-dot"></span><div><span><svg viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></div></div>
+            <div class="testimonial-navigation" aria-hidden="true">
+              <span class="testimonial-dot"></span>
+              <div>
+                <span
+                  ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-left"></use></svg></span
+                ><span
+                  ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span>
+              </div>
+            </div>
           </article>
 
           <article class="metrics-card">
@@ -1151,7 +1172,7 @@
 
               <button type="submit" class="btn-primary">
                 Começar meus 14 dias grátis
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#arrow-right"></use></svg>
               </button>
               <p class="form-note">
                 A ativação do programa será feita permanentemente após os 14
@@ -1167,12 +1188,19 @@
     <footer class="main-footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="logo" href="#inicio" aria-label="Focus Clínica — início"><span class="logo-icon"><img src="assets/img/focuslogo.png" alt="" /></span><span class="logo-text"><strong>Focus</strong> Clínica</span></a>
+          <a class="logo" href="#inicio" aria-label="Focus Clínica — início"
+            ><span class="logo-icon"
+              ><img src="assets/img/focuslogo.png" alt="" /></span
+            ><span class="logo-text"><strong>Focus</strong> Clínica</span></a
+          >
           <p>Tecnologia que organiza. Cuidado que aproxima.</p>
           <div class="social-links">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-            <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.5 7.2L4 20l1.3-4.5A8 8 0 1 1 20 11.5Z"/></svg></a>
+            <a href="#" aria-label="Instagram"
+              ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#instagram"></use></svg></a>
+            <a href="#" aria-label="LinkedIn"
+              ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#linkedin"></use></svg></a>
+            <a href="#" aria-label="WhatsApp"
+              ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#whatsapp"></use></svg></a>
           </div>
         </div>
 
@@ -1218,8 +1246,12 @@
       <div class="footer-bottom">
         <p>&copy; 2026 Focus Clínica. Todos os direitos reservados.</p>
         <div class="security-badges">
-          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 7 3v6c0 4-7 9-7 9s-7-5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg>LGPD</span>
-          <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg>Conexão segura</span>
+          <span
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#shield-check"></use></svg>LGPD</span
+          >
+          <span
+            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#lock-rounded"></use></svg>Conexão segura</span
+          >
         </div>
       </div>
     </footer>
