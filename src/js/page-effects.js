@@ -58,10 +58,10 @@
         ".feature-text .check-list > li",
         ".feature-preview",
         ".connected-cards > .card",
-        ".module-browser-bar",
-        ".module-brand",
-        ".module-menu-item",
-        ".module-account",
+        ".modulos-preview .dashboard-topbar",
+        ".modulos-preview .dashboard-brand",
+        ".modulos-preview .dashboard-menu-item",
+        ".modulos-preview .dashboard-sidebar-profile",
         ".module-titlebar",
         ".module-specialty-card",
         ".modules-section > .preview-note",
@@ -74,7 +74,7 @@
   ];
   const targetSet = new Set(targets);
   const delayStep = 180; // Intervalo entre elementos irmãos, em milissegundos.
-  const revealThreshold = 0.12; // Mesmo ponto de entrada usado no portfólio.
+  const revealThreshold = 0.12;
   const reveal = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -172,26 +172,32 @@
 
 // Somente as métricas curtas usam carrossel; leitura longa e formulários seguem estáticos.
 (() => {
-  const track = document.querySelector('.cards-grid-metrics');
+  const track = document.querySelector(".cards-grid-metrics");
   if (!track) return;
   const cards = [...track.children];
-  const mobile = matchMedia('(max-width: 37.5rem)');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const controls = document.createElement('div');
-  controls.className = 'metrics-carousel-controls';
+  const mobile = matchMedia("(max-width: 37.5rem)");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const controls = document.createElement("div");
+  controls.className = "metrics-carousel-controls";
   controls.hidden = true;
-  track.id = 'metrics-carousel';
-  const pause = document.createElement('button');
-  pause.type = 'button';
-  pause.setAttribute('aria-controls', track.id);
+  track.id = "metrics-carousel";
+  const pause = document.createElement("button");
+  pause.type = "button";
+  pause.setAttribute("aria-controls", track.id);
   controls.append(pause);
-  const dots = cards.map((card, index) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'carousel-dot';
-    dot.setAttribute('aria-label', `Mostrar métrica ${index + 1} de ${cards.length}`);
-    dot.setAttribute('aria-controls', track.id);
-    dot.addEventListener('click', () => { goTo(index); schedule(); });
+  const dots = cards.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "carousel-dot";
+    dot.setAttribute(
+      "aria-label",
+      `Mostrar métrica ${index + 1} de ${cards.length}`,
+    );
+    dot.setAttribute("aria-controls", track.id);
+    dot.addEventListener("click", () => {
+      goTo(index);
+      schedule();
+    });
     controls.append(dot);
     return dot;
   });
@@ -204,90 +210,158 @@
   let visible = false;
   const current = () => {
     const left = track.getBoundingClientRect().left;
-    return cards.reduce((best, card, index) =>
-      Math.abs(card.getBoundingClientRect().left - left) < Math.abs(cards[best].getBoundingClientRect().left - left) ? index : best, 0);
+    return cards.reduce(
+      (best, card, index) =>
+        Math.abs(card.getBoundingClientRect().left - left) <
+        Math.abs(cards[best].getBoundingClientRect().left - left)
+          ? index
+          : best,
+      0,
+    );
   };
-  const updateDots = () => dots.forEach((dot, index) => {
-    if (index === current()) dot.setAttribute('aria-current', 'true');
-    else dot.removeAttribute('aria-current');
-  });
+  const updateDots = () => {
+    const activeIndex = current();
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  };
   const stopAnimation = () => {
     cancelAnimationFrame(animation);
-    track.classList.remove('is-moving');
+    track.classList.remove("is-moving");
   };
   function goTo(index) {
     stopAnimation();
     const from = track.scrollLeft;
-    const to = Math.min(track.scrollWidth - track.clientWidth,
-      from + cards[index].getBoundingClientRect().left - track.getBoundingClientRect().left);
-    if (reduced.matches) { track.scrollLeft = to; updateDots(); return; }
-    track.classList.add('is-moving');
+    const to = Math.min(
+      track.scrollWidth - track.clientWidth,
+      from +
+        cards[index].getBoundingClientRect().left -
+        track.getBoundingClientRect().left,
+    );
+    if (reduced.matches) {
+      track.scrollLeft = to;
+      updateDots();
+      return;
+    }
+    track.classList.add("is-moving");
     const start = performance.now();
-    const step = now => {
+    const step = (now) => {
       const progress = Math.min(1, (now - start) / 500);
       track.scrollLeft = from + (to - from) * (1 - Math.pow(1 - progress, 3));
       if (progress < 1) animation = requestAnimationFrame(step);
-      else { track.classList.remove('is-moving'); updateDots(); }
+      else {
+        track.classList.remove("is-moving");
+        updateDots();
+      }
     };
     animation = requestAnimationFrame(step);
   }
   function schedule() {
     clearTimeout(timer);
-    if (!mobile.matches || reduced.matches || paused || interacting || hovering || !visible || document.hidden ||
-      track.contains(document.activeElement) || controls.contains(document.activeElement)) return;
-    timer = setTimeout(() => { goTo((current() + 1) % cards.length); schedule(); }, 7000);
+    if (
+      !mobile.matches ||
+      reduced.matches ||
+      paused ||
+      interacting ||
+      hovering ||
+      !visible ||
+      document.hidden ||
+      track.contains(document.activeElement) ||
+      controls.contains(document.activeElement)
+    )
+      return;
+    timer = setTimeout(() => {
+      goTo((current() + 1) % cards.length);
+      schedule();
+    }, 7000);
   }
   const sync = () => {
     stopAnimation();
     controls.hidden = !mobile.matches;
-    pause.textContent = paused || reduced.matches ? 'Reproduzir' : 'Pausar';
+    pause.textContent = paused || reduced.matches ? "Reproduzir" : "Pausar";
     pause.disabled = reduced.matches;
-    pause.setAttribute('aria-label', reduced.matches ? 'Reprodução automática desativada pela preferência de movimento reduzido' : `${paused ? 'Reproduzir' : 'Pausar'} métricas automaticamente`);
+    pause.setAttribute(
+      "aria-label",
+      reduced.matches
+        ? "Reprodução automática desativada pela preferência de movimento reduzido"
+        : `${paused ? "Reproduzir" : "Pausar"} métricas automaticamente`,
+    );
     if (mobile.matches) {
-      track.setAttribute('role', 'region');
-      track.setAttribute('aria-roledescription', 'carrossel');
-      track.setAttribute('aria-label', 'Impacto em números');
+      track.setAttribute("role", "region");
+      track.setAttribute("aria-roledescription", "carrossel");
+      track.setAttribute("aria-label", "Impacto em números");
       track.tabIndex = 0;
     } else {
-      track.removeAttribute('role');
-      track.removeAttribute('aria-roledescription');
-      track.removeAttribute('aria-label');
-      track.removeAttribute('tabindex');
+      track.removeAttribute("role");
+      track.removeAttribute("aria-roledescription");
+      track.removeAttribute("aria-label");
+      track.removeAttribute("tabindex");
       track.scrollLeft = 0;
     }
     updateDots();
     schedule();
   };
-  pause.addEventListener('click', () => { paused = !paused; sync(); });
-  track.addEventListener('scroll', () => { updateDots(); schedule(); }, { passive: true });
-  track.addEventListener('keydown', event => {
-    if (!mobile.matches || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  pause.addEventListener("click", () => {
+    paused = !paused;
+    sync();
+  });
+  track.addEventListener(
+    "scroll",
+    () => {
+      updateDots();
+      schedule();
+    },
+    { passive: true },
+  );
+  track.addEventListener("keydown", (event) => {
+    if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key))
+      return;
     event.preventDefault();
-    goTo((current() + (event.key === 'ArrowRight' ? 1 : cards.length - 1)) % cards.length);
+    goTo(
+      (current() + (event.key === "ArrowRight" ? 1 : cards.length - 1)) %
+        cards.length,
+    );
     schedule();
   });
-  track.addEventListener('pointerdown', () => { interacting = true; stopAnimation(); schedule(); });
-  const endInteraction = () => { interacting = false; schedule(); };
-  window.addEventListener('pointerup', endInteraction, { passive: true });
-  window.addEventListener('pointercancel', endInteraction, { passive: true });
-  track.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse') { hovering = true; schedule(); }
+  track.addEventListener("pointerdown", () => {
+    interacting = true;
+    stopAnimation();
+    schedule();
   });
-  track.addEventListener('pointerleave', event => {
-    if (event.pointerType === 'mouse') { hovering = false; schedule(); }
-  });
-  [track, controls].forEach(element => {
-    element.addEventListener('focusin', schedule);
-    element.addEventListener('focusout', () => queueMicrotask(schedule));
-  });
-  document.addEventListener('visibilitychange', schedule);
-  mobile.addEventListener('change', sync);
-  reduced.addEventListener('change', sync);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => {
-      visible = entries[0].isIntersecting;
+  const endInteraction = () => {
+    interacting = false;
+    schedule();
+  };
+  window.addEventListener("pointerup", endInteraction, { passive: true });
+  window.addEventListener("pointercancel", endInteraction, { passive: true });
+  track.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "mouse") {
+      hovering = true;
       schedule();
-    }, { threshold: 0.25 }).observe(track);
+    }
+  });
+  track.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse") {
+      hovering = false;
+      schedule();
+    }
+  });
+  [track, controls].forEach((element) => {
+    element.addEventListener("focusin", schedule);
+    element.addEventListener("focusout", () => queueMicrotask(schedule));
+  });
+  document.addEventListener("visibilitychange", schedule);
+  mobile.addEventListener("change", sync);
+  reduced.addEventListener("change", sync);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      (entries) => {
+        visible = entries[0].isIntersecting;
+        schedule();
+      },
+      { threshold: 0.25 },
+    ).observe(track);
   }
   sync();
 })();
