@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     />
-    <link rel="stylesheet" href="src/css/style.css?v=20261031-review1" />
-    <link rel="stylesheet" href="src/css/responsive.css?v=20261031-review1" />
-    <script src="src/js/navigation.js?v=20261031-review1" defer></script>
-    <script src="src/js/roi-calculator.js?v=20261031-review1" defer></script>
-    <script src="src/js/page-effects.js?v=20261031-review1" defer></script>
+    <link rel="stylesheet" href="src/css/style.css?v=20261031-review2" />
+    <link rel="stylesheet" href="src/css/responsive.css?v=20261031-review2" />
+    <script src="src/js/navigation.js?v=20261031-review2" defer></script>
+    <script src="src/js/roi-calculator.js?v=20261031-review2" defer></script>
+    <script src="src/js/page-effects.js?v=20261031-review2" defer></script>
     <title>
       Focus Clínica - Tecnologia que organiza. Cuidado que aproxima.
     </title>
@@ -25,7 +25,7 @@
         <div class="logo">
           <div class="logo-icon">
             <img
-              src="assets/img/focuslogo.png"
+              src="assets/img/focuslogo.webp"
               alt="Logo Focus Clínica"
               decoding="async"
               width="500"
@@ -149,9 +149,10 @@
         </div>
         <div class="image-doctor">
           <img
-            src="assets/img/doctor.png"
+            src="assets/img/doctor.webp"
             alt="Imagem de uma médica"
             decoding="async"
+            fetchpriority="high"
             width="600"
             height="450"
           />
@@ -341,7 +342,10 @@
       <section id="sobre" class="about-section">
         <div class="about-content">
           <span class="section-tag">02 / Sobre a Focus</span>
-          <h2>Sua vocação é cuidar.<br />A nossa é facilitar.</h2>
+          <h2>
+            Sua vocação é cuidar.<br />
+            A nossa é facilitar.
+          </h2>
           <p>
             A rotina de uma clínica não precisa disputar atenção com seus
             pacientes. A Focus Clínica conecta cada detalhe para que sua equipe
@@ -565,7 +569,7 @@
               >
                 <div class="dashboard-brand">
                   <img
-                    src="assets/img/focuslogo.png"
+                    src="assets/img/focuslogo.webp"
                     alt=""
                     decoding="async"
                     width="500"
@@ -981,7 +985,7 @@
             >
               <div class="dashboard-brand">
                 <img
-                  src="assets/img/focuslogo.png"
+                  src="assets/img/focuslogo.webp"
                   alt=""
                   decoding="async"
                   width="500"
@@ -1374,7 +1378,7 @@
 
             <div class="author-info">
               <img
-                src="assets/img/doctor.png"
+                src="assets/img/doctor.webp"
                 alt=""
                 decoding="async"
                 width="600"
@@ -1440,14 +1444,22 @@
               </div>
             </div>
             <div class="chart-container">
-              <img
-                src="assets/img/chart-evolution.svg"
-                width="340"
-                height="210"
-                alt="Gráfico demonstrativo de evolução do 1º ao 6º mês"
-                decoding="async"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  media="(min-width: 37.5001rem) and (max-width: 62rem)"
+                  srcset="assets/img/chart-evolution-tablet.svg"
+                  width="640"
+                  height="190"
+                />
+                <img
+                  src="assets/img/chart-evolution.svg"
+                  width="340"
+                  height="210"
+                  alt="Gráfico demonstrativo de evolução do 1º ao 6º mês"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </picture>
             </div>
             <p class="chart-caption">Exemplo de evolução</p>
           </article>
@@ -1556,7 +1568,7 @@
           <a class="logo" href="#inicio" aria-label="Focus Clínica — início"
             ><span class="logo-icon"
               ><img
-                src="assets/img/focuslogo.png"
+                src="assets/img/focuslogo.webp"
                 alt=""
                 decoding="async"
                 width="500"
@@ -1590,7 +1602,7 @@
               <li><a href="#funcionalidades">Funcionalidades</a></li>
               <li><a href="#beneficios">Benefícios</a></li>
               <li><a href="#teste-gratis">Demonstração</a></li>
-              <li><a href="#">Calculadora ROI</a></li>
+              <li><a href="#calculadora-roi">Calculadora ROI</a></li>
             </ul>
           </div>
 

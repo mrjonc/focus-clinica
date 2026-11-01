@@ -10,7 +10,10 @@
     .map((link) => ({ link, section: document.querySelector(link.hash) }))
     .filter(({ section }) => section)
     .sort((a, b) => a.section.offsetTop - b.section.offsetTop);
+  let activeLink = null;
   const setActive = (active) => {
+    if (activeLink === active) return;
+    activeLink = active;
     menuLinks.forEach((link) => {
       if (link === active) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");

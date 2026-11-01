@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 190" fill="none">
+  <path d="M0 15H640M0 73H640M0 132H640" stroke="#dce4ed" />
+  <path
+    d="M1 142C25 147 31 103 62 109S108 82 139 88S181 45 209 53S272 21 339 2"
+    transform="scale(1.88235 1)"
+    stroke="#28ae79"
+    stroke-width="2"
+    vector-effect="non-scaling-stroke"
+    stroke-linecap="round"
+  />
+  <g fill="#707974" font-family="Inter,Arial,sans-serif" font-size="12">
+    <text x="0" y="180">Mês 1</text>
+    <text x="640" y="180" text-anchor="end">Mês 6</text>
+  </g>
+</svg>
