@@ -6,18 +6,25 @@
   const duration = 1500; // Duração da contagem em milissegundos.
   const counted = new WeakSet();
   const countFrames = new WeakMap();
+  let headerHeight;
+  let previewHeight;
 
   function measure() {
     const rem = parseFloat(getComputedStyle(root).fontSize);
-    root.style.setProperty(
-      "--header-height",
-      `${header.getBoundingClientRect().height / rem}rem`,
-    );
-    if (preview)
+    const nextHeaderHeight = header.getBoundingClientRect().height / rem;
+    if (nextHeaderHeight !== headerHeight) {
+      headerHeight = nextHeaderHeight;
+      root.style.setProperty("--header-height", `${headerHeight}rem`);
+    }
+    if (!preview) return;
+    const nextPreviewHeight = preview.offsetHeight / rem;
+    if (nextPreviewHeight !== previewHeight) {
+      previewHeight = nextPreviewHeight;
       preview.parentElement.style.setProperty(
         "--preview-height",
-        `${preview.offsetHeight / rem}rem`,
+        `${previewHeight}rem`,
       );
+    }
   }
   measure();
   if ("ResizeObserver" in window) {
@@ -65,7 +72,6 @@
         ".module-titlebar",
         ".module-specialty-card",
         ".modules-section > .preview-note",
-        ".comparison-section > header > *",
         ".comparison-card",
         ".testimonial-card",
         ".metrics-card",
@@ -150,10 +156,8 @@
         const tick = (now) => {
           const progress = Math.max(0, Math.min(1, (now - start) / duration));
           const eased = 1 - Math.pow(1 - progress, 3);
-          element.textContent = format(
-            element,
-            Number(element.dataset.count) * eased,
-          );
+          const text = format(element, Number(element.dataset.count) * eased);
+          if (element.textContent !== text) element.textContent = text;
           if (progress < 1)
             countFrames.set(element, requestAnimationFrame(tick));
           else countFrames.delete(element);
@@ -210,12 +214,11 @@
   let visible = false;
   const current = () => {
     const left = track.getBoundingClientRect().left;
-    return cards.reduce(
-      (best, card, index) =>
-        Math.abs(card.getBoundingClientRect().left - left) <
-        Math.abs(cards[best].getBoundingClientRect().left - left)
-          ? index
-          : best,
+    const distances = cards.map((card) =>
+      Math.abs(card.getBoundingClientRect().left - left),
+    );
+    return distances.reduce(
+      (best, distance, index) => (distance < distances[best] ? index : best),
       0,
     );
   };

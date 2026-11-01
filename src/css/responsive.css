@@ -89,11 +89,6 @@
     padding-top: 0.75rem;
   }
 
-  .navbar {
-    padding: 1rem;
-    gap: 0.75rem;
-  }
-
   .menu {
     width: 100%;
     flex-basis: auto;
@@ -101,14 +96,10 @@
 
   .menu ul {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.25rem 0.5rem;
     text-align: center;
   }
 
   .main-header .btn-plataforma {
-    order: 4;
-    width: 100%;
     white-space: normal;
     text-align: center;
   }
@@ -234,7 +225,6 @@
 
   .image-doctor {
     --consult-top: clamp(8rem, 28vw, 12rem);
-    --satisfaction-top: 1rem;
     --reminder-top: auto;
   }
 
@@ -261,8 +251,6 @@
   }
 
   .preview-notifications > p {
-    display: inline-flex;
-    width: 48%;
     vertical-align: top;
   }
 }
@@ -307,15 +295,7 @@
 @media (min-width: 62.0001rem) {
   .hero-section {
     margin-top: 0;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
     align-items: start;
-    padding: 1.5rem clamp(2.5rem, 6.5vw, 5rem) 2rem;
-    gap: 2rem;
-  }
-
-  .hero-content {
-    padding-top: 2rem;
-    gap: 1.5rem;
   }
 
   .image-doctor {
@@ -369,18 +349,14 @@
   .hero-content .title {
     font-size: clamp(2.5rem, 4.065vw, 3.125rem);
     line-height: 1.12;
-    font-weight: 800;
-    letter-spacing: -0.035em;
     margin-bottom: 1.5rem;
   }
 
   .hero-content .description {
     min-height: 0;
-    margin-bottom: 1.5rem;
   }
 
   .hero-actions {
-    gap: 0.625rem;
     margin-bottom: 1.5rem;
   }
 
@@ -399,10 +375,6 @@
     font-weight: 500;
     padding: 0.75rem 1rem;
     border-radius: 0.625rem;
-  }
-
-  .hero-content .description-extra {
-    margin-bottom: 2rem;
   }
 
   .hero-content .subtitle-extra {
@@ -705,9 +677,9 @@
     height: 2.75rem;
     flex-shrink: 0;
     padding: 0.625rem;
-    border: 0.0625rem solid var(--outline-variant);
-    border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--secondary-container) 30%, transparent);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--primary);
     cursor: pointer;
   }
@@ -716,6 +688,7 @@
     display: block;
     width: 1.25rem;
     height: 0.125rem;
+    flex-shrink: 0;
     border-radius: 1rem;
     background: currentColor;
     transition:
@@ -1087,5 +1060,751 @@
 @media (prefers-reduced-motion: reduce) {
   .main-footer .social-links a {
     transition: none;
+  }
+}
+
+/* Alternativa tablet — referência: 768px.
+   Bloco isolado: remova-o para restaurar a composição anterior.
+   Limitado à navbar e ao hero, entre o mobile e o desktop existentes. */
+@media (min-width: 37.5001rem) and (max-width: 62rem) {
+  .main-header {
+    padding: 1.25rem 2rem 0.75rem;
+  }
+
+  .navbar.nav-enhanced {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .hero-section {
+    margin-top: 0;
+    padding: 2rem 3rem 3rem;
+    gap: 3.25rem;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 42rem;
+    gap: 0;
+  }
+
+  .hero-content .subtitle {
+    width: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-content .title {
+    font-size: clamp(2rem, 5.47vw, 2.75rem);
+    line-height: 1.16;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-content .title-line:not(:first-child) {
+    display: inline;
+  }
+
+  .hero-content .description {
+    width: 38rem;
+    min-height: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-actions > * {
+    flex: 0 0 auto;
+    min-height: 3.375rem;
+  }
+
+  .hero-content .description-extra {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-content .subtitle-extra {
+    margin-top: 0;
+  }
+
+  .image-doctor {
+    max-width: 35rem;
+    padding-top: 0;
+    --consult-top: 10rem;
+    --consult-left: 0rem;
+    --satisfaction-top: 2rem;
+    --satisfaction-right: 1rem;
+    --reminder-top: 15rem;
+    --reminder-right: 0rem;
+  }
+
+  .image-doctor .tag-badge {
+    padding: 0.625rem 0.75rem;
+    max-width: calc(100% - 1rem);
+  }
+
+  .product-preview {
+    width: calc(100% - 3rem);
+    max-width: 31rem;
+    margin: -6rem auto 0;
+  }
+
+  .preview-indicators dt {
+    white-space: normal;
+  }
+
+  .preview-indicators dd span,
+  .preview-notifications strong {
+    font-size: 0.5rem;
+  }
+
+  /* Footer tablet — marca acima das três colunas de navegação. */
+  .main-footer {
+    padding: 4rem 2.5rem 2rem;
+  }
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .footer-brand > p {
+    max-width: none;
+    margin-block: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .main-footer .social-links {
+    gap: 0.75rem;
+  }
+
+  .main-footer .social-links a {
+    width: 2.375rem;
+    height: 2.375rem;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-nav .nav-column {
+    min-width: 0;
+  }
+
+  .footer-nav .nav-column h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-nav .nav-column a {
+    font-size: 0.875rem;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* Chamada final tablet — formulário abaixo do conteúdo, com campos em dupla. */
+  .cta-section {
+    padding-inline: 3rem;
+  }
+
+  .cta-container {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .cta-text h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-block: 1.25rem 1rem;
+  }
+
+  .cta-text .check-list {
+    gap: 1rem;
+    margin-block: 1.75rem;
+  }
+
+  .cta-text .check-list li {
+    font-size: 0.875rem;
+  }
+
+  .cta-text > .lgpd-note {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .cta-section .form-card {
+    padding: 1.5rem;
+  }
+
+  .cta-section .form-card > p,
+  .cta-section .form-group label,
+  .cta-section .form-group input {
+    font-size: 0.8125rem;
+  }
+
+  .cta-section .form-card form {
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .cta-section .form-group input {
+    height: 3rem;
+  }
+
+  .cta-section .form-checkbox input {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .cta-section .form-checkbox label {
+    font-size: 0.75rem;
+  }
+
+  .cta-section .form-card .btn-primary {
+    min-height: 3.25rem;
+    font-size: 0.875rem;
+  }
+
+  .cta-section .form-note {
+    font-size: 0.6875rem;
+  }
+
+  /* Respiro vertical das seções conforme a referência tablet. */
+  main > section:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  main > section:not(.hero-section) {
+    padding-block: 6rem;
+  }
+
+  /* Impacto tablet — depoimento e métricas em cards de largura completa. */
+  .impact-section {
+    padding: 3rem;
+  }
+
+  .impact-section .section-header h2 {
+    margin-block: 1rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .impact-section .section-header > p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .impacto-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .testimonial-card,
+  .metrics-card {
+    padding: 2rem;
+    border-radius: 1.25rem;
+  }
+
+  .quote-tag {
+    line-height: 1.6;
+    font-size: 0.6875rem;
+  }
+
+  .testimonial-card::after {
+    top: 1.75rem;
+    right: 2rem;
+  }
+
+  .testimonial-card blockquote {
+    margin: 2rem 0 1.75rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .author-info {
+    gap: 0.875rem;
+  }
+
+  .author-info img {
+    width: 3.375rem;
+    height: 3.375rem;
+  }
+
+  .author-info strong {
+    font-size: 0.9375rem;
+  }
+
+  .author-info span {
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+  }
+
+  .audio-player {
+    margin-top: 1.75rem;
+  }
+
+  .testimonial-navigation {
+    padding-top: 1.75rem;
+  }
+
+  .metrics-tag {
+    white-space: normal;
+  }
+
+  .metrics-card h3 {
+    margin: 1.5rem 0;
+    font-size: 1.125rem;
+  }
+
+  .stat .number {
+    font-size: 2rem;
+  }
+
+  .stat .label {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .chart-container {
+    max-width: none;
+    margin: 1.75rem 0 0;
+  }
+
+  .chart-caption {
+    margin-top: 1.25rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Benefícios tablet — comparação em duas colunas a partir de 704px. */
+@media (min-width: 44rem) and (max-width: 62rem) {
+  .comparison-section {
+    padding: 3rem;
+  }
+
+  .comparison-section h2 {
+    margin-block: 1rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .comparison-section .section-header > p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .comparison-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .comparison-card {
+    padding: 1.5rem;
+    border-radius: 1.125rem;
+  }
+
+  .comparison-card.traditional {
+    border: 1px solid rgb(191 201 194 / 50.2%);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 5.88%);
+  }
+
+  .comparison-card.automation {
+    border: 1px solid rgb(200 248 226);
+    box-shadow: 0 12px 24px rgb(0 81 59 / 7.84%);
+  }
+
+  .comparison-card h3 {
+    min-height: 6rem;
+    gap: 0.75rem;
+    padding: 1.5rem 0 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+
+  .comparison-card h3 svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+
+  .comparison-card.automation h3 {
+    padding-right: 0;
+  }
+
+  .comparison-card .badge {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    margin: 0;
+    padding: 0.3125rem 0.5rem;
+    font-size: 0.5625rem;
+    border-radius: 0.375rem;
+  }
+
+  .comparison-card ul {
+    grid-auto-rows: minmax(3rem, auto);
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .comparison-card li {
+    padding-left: 1.625rem;
+    font-size: 0.8125rem;
+    line-height: 1.65;
+  }
+}
+
+/* Cards complementares e módulos — continuação da composição tablet. */
+@media (min-width: 37.5001rem) and (max-width: 62rem) {
+  .overview-section > .connected-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .overview-section > .connected-cards .card {
+    min-height: 0;
+    padding: 1.375rem;
+  }
+
+  .overview-section > .connected-cards .card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .overview-section > .connected-cards h4 {
+    min-height: 0;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .overview-section > .connected-cards .card > p {
+    margin-bottom: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .connected-cards .record-tags {
+    flex-wrap: wrap;
+  }
+
+  .modules-section {
+    padding: 3rem 3rem;
+  }
+
+  .modules-section .section-header h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-block: 1rem;
+  }
+
+  .modules-section .section-header > p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .modules-section .module-content {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .modules-section .module-specialties {
+    gap: 1rem;
+  }
+
+  .modules-section .module-specialty-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 0.875rem;
+  }
+
+  .modules-section .module-specialty-card > p {
+    flex: 1;
+  }
+
+  .modules-section .dashboard-topbar {
+    height: auto;
+    min-height: 3.5rem;
+    flex-wrap: wrap;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .modules-section > .preview-note {
+    margin-top: 1.5rem;
+    font-size: 0.6875rem;
+  }
+
+  /* Tudo conectado — navegação 2 × 2 e agenda completa abaixo do texto. */
+  .overview-section {
+    padding: 2rem 3rem 3rem;
+  }
+
+  .overview-section .section-header h2 {
+    font-size: 1.75rem;
+    line-height: 1.35;
+    margin-block: 1rem;
+  }
+
+  .features-nav {
+    gap: 0.75rem;
+    margin-block: 2rem;
+  }
+
+  .features-nav .nav-item {
+    padding: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .features-nav .nav-item > span {
+    white-space: normal;
+  }
+
+  .feature-detail {
+    padding: 1.75rem;
+    gap: 2rem;
+  }
+
+  .feature-text h3 {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-block: 1.25rem;
+  }
+
+  .feature-text > p {
+    font-size: 0.875rem;
+  }
+
+  .feature-text .check-list {
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+  }
+
+  .feature-text .check-list li {
+    font-size: 0.75rem;
+  }
+
+  .feature-preview {
+    aspect-ratio: auto;
+    max-height: none;
+  }
+
+  .feature-preview .schedule-dashboard {
+    position: relative;
+    min-height: 46rem;
+  }
+
+  .feature-preview .dashboard-sidebar {
+    padding-inline: 0.75rem;
+  }
+
+  .feature-preview .dashboard-brand {
+    gap: 0.375rem;
+    padding-inline: 0;
+  }
+
+  .feature-preview .dashboard-brand strong {
+    font-size: 0.6875rem;
+  }
+
+  .feature-preview .dashboard-menu-item {
+    gap: 0.375rem;
+    padding-inline: 0.25rem;
+    font-size: 0.625rem;
+  }
+
+  .feature-preview .dashboard-sidebar-profile {
+    padding-inline: 0.5rem;
+  }
+
+  .feature-preview .dashboard-topbar {
+    height: auto;
+    min-height: 3.5rem;
+    flex-wrap: wrap;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .feature-preview .dashboard-content {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .feature-preview .schedule-header {
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .feature-preview .schedule-header > div {
+    flex-basis: 100%;
+  }
+
+  .feature-preview .schedule-table {
+    table-layout: fixed;
+    white-space: normal;
+    font-size: 0.625rem;
+  }
+
+  .feature-preview .schedule-table th,
+  .feature-preview .schedule-table td {
+    padding-inline: 0.25rem;
+  }
+
+  .feature-preview .schedule-table thead th {
+    font-size: 0.5625rem;
+  }
+
+  .feature-preview .schedule-table thead th:first-child {
+    width: 13%;
+  }
+
+  .feature-preview .schedule-patient {
+    gap: 0.375rem;
+  }
+
+  .feature-preview .schedule-patient .dashboard-avatar {
+    width: 1.375rem;
+    height: 1.375rem;
+    font-size: 0.5625rem;
+  }
+
+  .feature-preview .schedule-patient > span:last-child {
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .feature-preview .schedule-status {
+    max-width: 100%;
+  }
+
+  /* Sobre e calculadora ROI — composição vertical para tablet. */
+  .about-section {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2rem 3rem 3rem;
+    gap: 2.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.75rem;
+    line-height: 1.35;
+    margin-block: 1rem;
+  }
+
+  .about-content h2 br {
+    display: none;
+  }
+
+  .about-content > p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .timeline-grid {
+    margin-top: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .timeline-item h3 {
+    font-size: 0.875rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.75rem;
+  }
+
+  .roi-calculator {
+    padding: 2rem;
+    border-radius: 1.5rem;
+  }
+
+  .roi-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .roi-header p {
+    font-size: 0.8125rem;
+  }
+
+  .roi-results output {
+    font-size: 1.75rem;
+  }
+
+  .roi-results p {
+    font-size: 0.75rem;
+  }
+
+  .roi-assumptions {
+    font-size: 0.6875rem;
+    line-height: 1.65;
+  }
+}
+
+/* Indicadores tablet: três cards equilibrados na referência de 768px. */
+@media (min-width: 44rem) and (max-width: 62rem) {
+  .metrics-overview {
+    padding: 2rem 3rem 3rem;
+  }
+
+  .metrics-overview .section-tag {
+    margin-bottom: 1.25rem;
+  }
+
+  .metrics-overview h2 {
+    font-size: 1.75rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    letter-spacing: -0.025em;
+  }
+
+  .cards-grid-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .metrics-overview .card {
+    min-width: 0;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .metrics-overview .card-results {
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .metrics-overview .card-results h3 {
+    min-width: 0;
+    font-size: clamp(1.625rem, 4vw, 2rem);
+  }
+
+  .metrics-overview .stat-value [data-count] {
+    width: auto;
+  }
+
+  .metrics-overview .card-results img {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .metrics-overview .card-description {
+    min-height: 2.8em;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .metrics-overview .card-description-extra {
+    font-size: 0.75rem;
+    line-height: 1.55;
   }
 }
