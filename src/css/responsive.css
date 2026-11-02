@@ -85,10 +85,6 @@
 }
 
 @media (max-width: 37.5rem) {
-  .main-header {
-    padding-top: 0.75rem;
-  }
-
   .menu {
     width: 100%;
     flex-basis: auto;
@@ -172,7 +168,11 @@
     scroll-snap-align: start;
     min-width: 0;
     border-radius: 1.125rem;
-    border-color: color-mix(in srgb, var(--tertiary-container) 40%, var(--surface-container-high));
+    border-color: color-mix(
+      in srgb,
+      var(--tertiary-container) 40%,
+      var(--surface-container-high)
+    );
   }
 
   /* O swipe precisa mostrar os cards imediatamente, sem aguardar a revelação. */
@@ -1857,8 +1857,45 @@
   }
 }
 
-/* Tipografia dos subtítulos de seção no desktop. */
+/* Equipe: proporções dos cards na referência de desktop. */
 @media (min-width: 62.0001rem) {
+  .developers-grid {
+    grid-auto-rows: 1fr;
+  }
+
+  .developer-card {
+    width: 100%;
+    max-width: 468px;
+    min-height: 278px;
+    padding: 2rem;
+  }
+
+  .developer-card .developer-role {
+    margin-top: 0;
+  }
+
+  .developer-card .developer-bio {
+    margin-block: 0 1.25rem;
+    font-size: clamp(0.75rem, 1vw, 0.8125rem);
+    letter-spacing: -0.01em;
+  }
+
+  .developer-card .developer-link {
+    min-height: 2.25rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .developer-card-loading .developer-name {
+    width: 100%;
+  }
+
+  .developer-card-loading .developer-bio {
+    min-height: 1.3rem;
+  }
+
+  .developer-card-loading .developer-links {
+    min-height: 2.25rem;
+  }
   .metrics-overview h2,
   .about-content h2,
   .overview-section .section-header h2,
@@ -1872,22 +1909,80 @@
 }
 
 @media (max-width: 62rem) {
-  .developer-card {
-    padding: 1.5rem;
+  .team-section {
+    padding: 2rem 2.5rem 4rem;
+    background: linear-gradient(160deg, var(--surface), #a6f2d1);
+  }
+
+  .team-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .team-header h2 {
+    text-align: left;
+  }
+
+  .developers-grid {
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .team-section .footer-bottom {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 0;
+    border-top: 0;
   }
 }
 
 @media (max-width: 37.5rem) {
   .team-section {
-    padding-block: 3rem 1.5rem;
+    padding: 4rem 1.25rem;
+    border-top: 1px solid var(--primary);
+  }
+
+  .team-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .team-header h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .developers-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 88%;
+    align-items: stretch;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .developers-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .developers-grid:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
   }
 
   .developer-card {
-    border-radius: 1.125rem;
+    padding: 1.5rem;
+    scroll-snap-align: start;
+  }
+
+  .team-section .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 2.75rem;
   }
 }
