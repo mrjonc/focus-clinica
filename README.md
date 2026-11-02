@@ -8,13 +8,11 @@ A landing page do **Focus Clínica** foi desenvolvida para apresentar um softwar
 
 🔗 **Protótipo no Figma:** [Design do Focus Clínica no Figma](https://www.figma.com/design/ctNGaNMeS665UBKFjH1aiX/Focus-Clinica---LP?node-id=53-7&t=c8QtKKv6jcIK2l8V-1)
 
-<<<<<<< HEAD
 🔗 **Plataforma oficial:** [focus-clinica.netlify.app](https://focus-clinica.netlify.app/)
 
 🔗 **Documentação do projeto:** [Notion](https://app.notion.com/p/DOCUMENTA-O-DO-PROJETO-FRONT-END-3feeed34bfcc8000b011c7579a7b824e)
 =======
 ![Demonstração do Focus Clínica](assets/img/preview.png)
->>>>>>> 1a639cf (docs: adicionando foto para o repositorio  README.md)
 
 ## Equipe
 
