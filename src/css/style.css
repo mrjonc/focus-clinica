@@ -3144,13 +3144,19 @@ main>section,
 
 /* Equipe: os campos dos cards serão preenchidos pela integração de perfis. */
 .team-section {
-  padding: 4.5rem clamp(1rem, 4vw, 3rem) 2rem;
+  padding: 4rem clamp(1rem, 4vw, 3rem) 2rem;
   background: linear-gradient(165deg, var(--surface) 5%, #b9f2d5 100%);
   color: var(--surface-variant);
 }
 
 .team-container {
-  max-width: 82.75rem;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+.team-header,
+.developers-grid {
+  max-width: 60rem;
   margin-inline: auto;
 }
 
@@ -3167,6 +3173,7 @@ main>section,
   font-style: normal;
   line-height: 1;
   letter-spacing: 0;
+  text-align: left;
 }
 
 .developers-grid {
@@ -3245,24 +3252,43 @@ main>section,
 }
 
 .developer-link {
+  --developer-transition: 600ms cubic-bezier(0.45, 0, 0.2, 1);
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 2.75rem;
   padding: 0.625rem 1.25rem;
+  border: 1px solid transparent;
   border-radius: 2rem;
-  background: var(--surface-container-low);
+  background-color: var(--surface-container-low);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 0 rgb(27 107 81 / 0%);
   color: var(--primary);
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.5;
-  transition: background-color var(--transition-button);
+  transition:
+    background-color var(--developer-transition),
+    border-color var(--developer-transition),
+    color var(--developer-transition),
+    box-shadow var(--developer-transition),
+    transform var(--developer-transition);
 }
 
-a.developer-link:is(:hover, :focus-visible) {
-  background: var(--secondary-container);
+.developer-link:is(:hover, :focus-visible) {
+  background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+  border-color: rgb(255 255 255 / 65%);
+  color: #ffffff;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--primary) 16%, transparent);
+  transform: translateY(-2px);
+}
+
+a.developer-link:active {
+  transform: translateY(0);
 }
 
 .team-section .footer-bottom {
-  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  border-top: 0;
 }
