@@ -125,14 +125,14 @@
     display: grid;
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: 88%;
+    grid-auto-columns: 100%;
     gap: 1rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     padding-block: 0.5rem;
-    padding-inline-end: 12%;
+    padding-inline-end: 0;
   }
 
   .overview-section > .cards-grid.connected-cards {
@@ -148,6 +148,7 @@
     padding-inline-end: 0;
   }
 
+  .cards-grid-metrics::-webkit-scrollbar,
   .overview-section > .connected-cards::-webkit-scrollbar {
     display: none;
   }
@@ -163,14 +164,15 @@
   }
 
   .cards-grid-metrics.is-moving,
-  .connected-cards.is-moving {
+  .overview-section > .cards-grid.connected-cards.is-moving {
     scroll-snap-type: none;
   }
 
   .cards-grid-metrics > .card {
     scroll-snap-align: start;
     min-width: 0;
-    height: 100%;
+    border-radius: 1.125rem;
+    border-color: color-mix(in srgb, var(--tertiary-container) 40%, var(--surface-container-high));
   }
 
   /* O swipe precisa mostrar os cards imediatamente, sem aguardar a revelação. */
@@ -1866,5 +1868,26 @@
   .cta-text h2 {
     font-size: 36px;
     font-weight: 700;
+  }
+}
+
+@media (max-width: 62rem) {
+  .developer-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .team-section {
+    padding-block: 3rem 1.5rem;
+  }
+
+  .developers-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .developer-card {
+    border-radius: 1.125rem;
   }
 }
