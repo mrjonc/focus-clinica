@@ -730,16 +730,17 @@ main>section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--outline-variant);
-  border-radius: 50%;
-  transition:
-    background-color var(--transition-button),
-    border-color var(--transition-button);
+  border: 0;
+  transition: color var(--transition-button);
 }
 
-.connected-carousel-controls .carousel-arrow:is(:hover, :focus-visible) {
-  background-color: var(--secondary-container);
-  border-color: var(--primary);
+.connected-carousel-controls .carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.connected-carousel-controls .carousel-arrow:enabled:is(:hover, :focus-visible) {
+  color: var(--on-secondary-container);
 }
 
 .carousel-arrow svg {
@@ -1364,7 +1365,7 @@ main>section,
 
 .feature-text .check-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   font: normal 500 14px/1.6 var(--font-titulo);
   letter-spacing: 0;
@@ -1373,6 +1374,7 @@ main>section,
 .feature-check {
   width: 20px;
   height: 20px;
+  margin-top: max(0px, calc((1lh - 20px) / 2));
   flex-shrink: 0;
   fill: none;
   stroke: var(--primary);
@@ -3138,4 +3140,129 @@ main>section,
       var(--primary) 5%,
       var(--surface-container-lowest));
   box-shadow: 0 3px 9px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Equipe: os campos dos cards serão preenchidos pela integração de perfis. */
+.team-section {
+  padding: 4.5rem clamp(1rem, 4vw, 3rem) 2rem;
+  background: linear-gradient(165deg, var(--surface) 5%, #b9f2d5 100%);
+  color: var(--surface-variant);
+}
+
+.team-container {
+  max-width: 82.75rem;
+  margin-inline: auto;
+}
+
+.team-header {
+  margin-bottom: 2rem;
+}
+
+.team-header h2 {
+  margin-top: 1rem;
+  color: var(--on-surface);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.developer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: var(--surface-container-lowest);
+}
+
+.developer-avatar {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: var(--surface-container-low);
+  color: var(--secondary);
+}
+
+.developer-avatar svg {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.developer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.developer-name {
+  color: var(--on-surface);
+  font-family: var(--font-titulo);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.developer-role {
+  margin-top: 0.25rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.developer-bio {
+  margin-block: 0.5rem 1.5rem;
+  color: var(--secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.developer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.developer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 2rem;
+  background: var(--surface-container-low);
+  color: var(--primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: background-color var(--transition-button);
+}
+
+a.developer-link:is(:hover, :focus-visible) {
+  background: var(--secondary-container);
+}
+
+.team-section .footer-bottom {
+  border-color: color-mix(in srgb, var(--primary) 20%, transparent);
 }
