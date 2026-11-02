@@ -4,18 +4,18 @@
 
 A landing page do **Focus Clínica** foi desenvolvida para apresentar um software de gestão médica de alta performance. A plataforma conecta agenda, prontuário eletrônico por especialidades e gestão financeira para otimizar o tempo das equipes de saúde e humanizar o atendimento aos pacientes.
 
-**Demonstração da Landing Page:** [focus-clinica.vercel.app](https://focus-clinica.vercel.app/)
+🔗 **Demonstração da Landing Page:** [focus-clinica.vercel.app](https://focus-clinica.vercel.app/)
 
-**Protótipo no Figma:** [Design do Focus Clínica no Figma](https://www.figma.com/design/ctNGaNMeS665UBKFjH1aiX/Focus-Clinica---LP?node-id=53-7&t=c8QtKKv6jcIK2l8V-1)
+🔗 **Protótipo no Figma:** [Design do Focus Clínica no Figma](https://www.figma.com/design/ctNGaNMeS665UBKFjH1aiX/Focus-Clinica---LP?node-id=53-7&t=c8QtKKv6jcIK2l8V-1)
 
 ## Equipe
 
 | Integrante | Atuação |
 | --- | --- |
 | [Claudia Ferreira de Mello](https://www.linkedin.com/in/claudia-ferreira-de-mello) | Design |
-| [netoMendes21](https://github.com/netoMendes21) | Dev Frontend |
-| [mrjonc](https://github.com/mrjonc) | Dev Frontend |
-| [daniebraga](https://github.com/daniebraga) | Dev Frontend |
+| [Neto Mendes](https://github.com/netoMendes21) | Dev Frontend |
+| [Jonathan Lima](https://github.com/mrjonc) | Dev Frontend |
+| [Danielle Braga](https://github.com/daniebraga) | Dev Frontend |
 
 ---
 
@@ -123,7 +123,7 @@ A estilização é regida por variáveis CSS nativas (`:root`), permitindo manut
 
 ---
 
-## Responsividade e Acessibilidade (A11y)
+## Responsividade e Acessibilidade
 
 O projeto adota uma abordagem **Mobile-First** detalhada no `responsive.css`:
 
