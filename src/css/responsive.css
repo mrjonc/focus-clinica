@@ -397,6 +397,17 @@
     margin: -8.375rem 3.5rem 0 3.75rem;
     padding: 1rem;
     border-radius: 1rem;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .product-preview .preview-header h2 {
+    font-family: inherit;
+  }
+
+  .about-content h2 {
+    font-family: "Outfit", sans-serif;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
   }
 
   .preview-indicators {
@@ -405,6 +416,13 @@
 
   .preview-panels > section {
     min-height: 5.625rem;
+  }
+}
+
+@media (min-width: 75.0001rem) {
+  .navbar-links .menu ul {
+    justify-content: center;
+    gap: 24px;
   }
 }
 
@@ -1806,5 +1824,19 @@
   .metrics-overview .card-description-extra {
     font-size: 0.75rem;
     line-height: 1.55;
+  }
+}
+
+/* Tipografia dos subtítulos de seção no desktop. */
+@media (min-width: 62.0001rem) {
+  .metrics-overview h2,
+  .about-content h2,
+  .overview-section .section-header h2,
+  .modules-section .section-header h2,
+  .comparison-section h2,
+  .impact-section .section-header h2,
+  .cta-text h2 {
+    font-size: 36px;
+    font-weight: 700;
   }
 }
