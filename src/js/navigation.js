@@ -1,4 +1,22 @@
 (() => {
+  const navigation = performance.getEntriesByType("navigation")[0];
+  if (navigation?.type === "reload") {
+    const previousScrollRestoration = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+    const url = new URL(window.location.href);
+    url.hash = "";
+    history.replaceState(history.state, "", url.href);
+
+    const resetScroll = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      requestAnimationFrame(() => {
+        history.scrollRestoration = previousScrollRestoration;
+      });
+    };
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    window.addEventListener("pageshow", resetScroll, { once: true });
+  }
+
   const navbar = document.querySelector(".navbar");
   const button = navbar?.querySelector(".nav-toggle");
   const links = navbar?.querySelector(".navbar-links");
