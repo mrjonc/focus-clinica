@@ -11,7 +11,7 @@ A landing page do **Focus Clínica** foi desenvolvida para apresentar um softwar
 🔗 **Plataforma oficial:** [focus-clinica.netlify.app](https://focus-clinica.netlify.app/)
 
 🔗 **Documentação do projeto:** [Notion](https://app.notion.com/p/DOCUMENTA-O-DO-PROJETO-FRONT-END-3feeed34bfcc8000b011c7579a7b824e)
-=======
+
 ![Demonstração do Focus Clínica](assets/img/preview.png)
 
 ## Equipe
