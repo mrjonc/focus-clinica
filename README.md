@@ -73,10 +73,6 @@ A landing page inclui uma **Calculadora de Retorno sobre Investimento (ROI)** de
 
   $$\text{Horas Poupadas} = \frac{\text{Consultas Totais} \times 3 \text{ min}}{60}$$
 
-- **Receita Recuperada:**
-
-  $$\text{Receita} = \text{Consultas Totais} \times 20\% \text{ (taxa prévia de faltas)} \times 45\% \text{ (reversão de absenteísmo)} \times \text{R\$ 200 (ticket médio)}$$
-
 ### Recursos do Script
 
 - **Internacionalização de Números (`Intl.NumberFormat`):** Formatação nativa em `pt-BR` para horas, numerais simples e moeda corrente (BRL sem decimais).
