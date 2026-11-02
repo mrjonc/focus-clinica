@@ -135,7 +135,35 @@
     padding-inline-end: 12%;
   }
 
-  .cards-grid-metrics.is-moving {
+  .overview-section > .cards-grid.connected-cards {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-block: 0.5rem 1rem;
+    padding-inline-end: 0;
+  }
+
+  .overview-section > .connected-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .connected-cards > .card {
+    scroll-snap-align: start;
+  }
+
+  .connected-cards > .card.reveal-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cards-grid-metrics.is-moving,
+  .connected-cards.is-moving {
     scroll-snap-type: none;
   }
 
