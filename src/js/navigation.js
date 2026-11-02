@@ -67,6 +67,7 @@
   );
   // Uma nova interação de scroll cancela a prioridade temporária do clique.
   const releaseSelection = () => {
+    clearTimeout(selectionTimeout);
     selectedLink = null;
     schedulePosition();
   };

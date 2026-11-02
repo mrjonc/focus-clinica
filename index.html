@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conheça o Focus Clínica: gestão de agendas, agendamentos, notificações e especialidades em uma plataforma para clínicas e profissionais da saúde."
+    />
     <link rel="icon" type="image/webp" href="assets/img/focuslogo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,16 +14,25 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     />
-    <link rel="stylesheet" href="src/css/style.css?v=20261031-review2" />
-    <link rel="stylesheet" href="src/css/responsive.css?v=20261031-review2" />
-    <script src="src/js/navigation.js?v=20261031-review2" defer></script>
-    <script src="src/js/roi-calculator.js?v=20261031-review2" defer></script>
-    <script src="src/js/page-effects.js?v=20261031-review2" defer></script>
+    <link rel="stylesheet" href="src/css/style.css?v=20261102-refactor" />
+    <link rel="stylesheet" href="src/css/responsive.css?v=20261102-refactor" />
+    <script src="src/js/navigation.js?v=20261102-refactor" defer></script>
+    <script src="src/js/roi-calculator.js?v=20261102-refactor" defer></script>
+    <script src="src/js/page-effects.js?v=20261102-refactor" defer></script>
+    <script src="src/js/team-members.js?v=20261102-refactor" defer></script>
+    <script src="src/js/github-profiles.js?v=20261102-refactor" defer></script>
+    <script src="src/js/team.js?v=20261102-refactor" defer></script>
+    <script
+      src="src/js/landing-interactions.js?v=20261102-refactor"
+      defer
+    ></script>
+    <script src="src/js/trial-form.js?v=20261102-refactor" defer></script>
     <title>
       Focus Clínica - Tecnologia que organiza. Cuidado que aproxima.
     </title>
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <!-- CABEÇALHO / NAVBAR -->
     <header class="main-header">
       <nav class="navbar" aria-label="Navegação principal">
@@ -82,7 +95,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main id="conteudo">
       <!-- HERO-->
       <section id="inicio" class="hero-section">
         <div class="hero-content">
@@ -121,8 +134,8 @@
                 <use href="assets/icons/sprite.svg#arrow-up-right"></use>
               </svg>
             </a>
-            <button type="button" class="btn-demonstracao">
-              Ver demonstração interativa
+            <a href="#especialidades" class="btn-demonstracao">
+              Ver demonstração
               <img
                 class="icone-play"
                 src="assets/img/circle-play.svg"
@@ -131,7 +144,7 @@
                 alt=""
                 decoding="async"
               />
-            </button>
+            </a>
           </div>
           <p class="description-extra">
             <img
@@ -1492,13 +1505,20 @@
             <h3>Seu teste grátis começa aqui.</h3>
             <p>Preencha seus dados para dar o primeiro passo.</p>
 
-            <form action="#" method="POST">
+            <form
+              action="#"
+              method="POST"
+              data-trial-form
+              data-platform-url="https://focus-clinica.netlify.app/"
+            >
               <div class="form-group">
                 <label for="name">Nome completo</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  autocomplete="name"
+                  maxlength="120"
                   placeholder="Como podemos te chamar?"
                   required
                 />
@@ -1509,6 +1529,8 @@
                   type="email"
                   id="email"
                   name="email"
+                  autocomplete="email"
+                  maxlength="254"
                   placeholder="voce@clinica.com.br"
                   required
                 />
@@ -1521,6 +1543,8 @@
                     type="text"
                     id="clinic-name"
                     name="clinic_name"
+                    autocomplete="organization"
+                    maxlength="150"
                     placeholder="Sua clínica"
                     required
                   />
@@ -1532,6 +1556,9 @@
                     type="tel"
                     id="whatsapp"
                     name="whatsapp"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    maxlength="22"
                     placeholder="(11) 99999-9999"
                     required
                   />
@@ -1546,12 +1573,18 @@
                 >
               </div>
 
-              <button type="submit" class="btn-primary">
+              <button type="submit" class="btn-primary" disabled>
                 Começar meus 14 dias grátis
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <use href="assets/icons/sprite.svg#arrow-right"></use>
                 </svg>
               </button>
+              <p class="form-status" data-form-status role="alert"></p>
+              <noscript
+                ><p>
+                  Ative o JavaScript para continuar pelo formulário.
+                </p></noscript
+              >
               <p class="form-note">
                 A ativação do programa será feita permanentemente após os 14
                 dias.
@@ -1579,18 +1612,30 @@
           >
           <p>Tecnologia que organiza. Cuidado que aproxima.</p>
           <div class="social-links">
-            <a href="#" aria-label="Instagram"
+            <span
+              class="social-placeholder"
+              role="img"
+              aria-disabled="true"
+              aria-label="Instagram"
               ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href="assets/icons/sprite.svg#instagram"></use></svg
-            ></a>
-            <a href="#" aria-label="LinkedIn"
+            ></span>
+            <span
+              class="social-placeholder"
+              role="img"
+              aria-disabled="true"
+              aria-label="LinkedIn"
               ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href="assets/icons/sprite.svg#linkedin"></use></svg
-            ></a>
-            <a href="#" aria-label="WhatsApp"
+            ></span>
+            <span
+              class="social-placeholder"
+              role="img"
+              aria-disabled="true"
+              aria-label="WhatsApp"
               ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <use href="assets/icons/sprite.svg#whatsapp"></use></svg
-            ></a>
+            ></span>
           </div>
         </div>
 
@@ -1602,7 +1647,7 @@
               <li><a href="#sobre">Sobre a Focus</a></li>
               <li><a href="#funcionalidades">Funcionalidades</a></li>
               <li><a href="#beneficios">Benefícios</a></li>
-              <li><a href="#teste-gratis">Demonstração</a></li>
+              <li><a href="#especialidades">Demonstração</a></li>
               <li><a href="#calculadora-roi">Calculadora ROI</a></li>
             </ul>
           </div>
@@ -1610,39 +1655,58 @@
           <div class="nav-column">
             <h4>Fale com a gente</h4>
             <ul>
-              <li><a href="#teste-gratis">Agendar demonstração</a></li>
-              <li><a href="#">Central de ajuda</a></li>
+              <li><a href="#especialidades">Ver demonstração</a></li>
+              <li><span aria-disabled="true">Central de ajuda</span></li>
               <li>
                 <a href="mailto:contato@focusclinica.com.br"
                   >contato@focusclinica.com.br</a
                 >
               </li>
-              <li><a href="#">WhatsApp comercial</a></li>
+              <li><span aria-disabled="true">WhatsApp comercial</span></li>
             </ul>
           </div>
 
           <div class="nav-column">
             <h4>Transparência</h4>
             <ul>
-              <li><a href="#">Política de Privacidade</a></li>
-              <li><a href="#">Termos de Uso</a></li>
-              <li><a href="#">LGPD e proteção de dados</a></li>
-              <li><a href="#">Segurança da informação</a></li>
+              <li><span aria-disabled="true">Política de Privacidade</span></li>
+              <li><span aria-disabled="true">Termos de Uso</span></li>
+              <li>
+                <span aria-disabled="true">LGPD e proteção de dados</span>
+              </li>
+              <li><span aria-disabled="true">Segurança da informação</span></li>
             </ul>
           </div>
         </nav>
       </div>
-
     </footer>
 
-    <!-- EQUIPE — espaços reservados para os dados públicos dos contribuidores. -->
+    <!-- EQUIPE — integrantes configurados em src/js/team-members.js. -->
     <section class="team-section" aria-labelledby="team-title">
       <div class="team-container">
         <header class="team-header">
           <span class="section-tag">A equipe</span>
           <h2 id="team-title">Design e desenvolvimento</h2>
         </header>
-        <div class="developers-grid" data-contributors tabindex="0" role="region" aria-label="Contribuidores do projeto">
+        <p
+          class="developer-status sr-only"
+          data-team-status
+          role="status"
+          aria-live="polite"
+        ></p>
+        <noscript
+          ><p>
+            Ative o JavaScript para consultar os perfis da equipe.
+          </p></noscript
+        >
+        <div
+          class="developers-grid"
+          data-contributors
+          tabindex="0"
+          role="region"
+          aria-label="Contribuidores do projeto"
+        ></div>
+        <template id="developer-card-template">
           <article class="developer-card" data-contributor-card>
             <div class="developer-avatar" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
@@ -1650,68 +1714,13 @@
                 <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
               </svg>
             </div>
-            <h3 class="developer-name" data-contributor-name>Nome do contribuidor</h3>
-            <p class="developer-role" data-contributor-role>Área de atuação</p>
-            <p class="developer-bio" data-contributor-bio>
-              Uma breve apresentação e as principais habilidades de quem contribuiu com o projeto.
-            </p>
-            <div class="developer-links" data-contributor-links>
-              <span class="developer-link" aria-disabled="true">GitHub</span>
-              <span class="developer-link" aria-disabled="true">LinkedIn</span>
-            </div>
+            <h3 class="developer-name" data-contributor-name></h3>
+            <p class="developer-role" data-contributor-role hidden></p>
+            <p class="developer-bio" data-contributor-bio></p>
+            <p class="developer-notice" data-contributor-notice hidden></p>
+            <div class="developer-links" data-contributor-links></div>
           </article>
-          <article class="developer-card" data-contributor-card>
-            <div class="developer-avatar" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="8" r="3.5"></circle>
-                <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
-              </svg>
-            </div>
-            <h3 class="developer-name" data-contributor-name>Nome do contribuidor</h3>
-            <p class="developer-role" data-contributor-role>Área de atuação</p>
-            <p class="developer-bio" data-contributor-bio>
-              Uma breve apresentação e as principais habilidades de quem contribuiu com o projeto.
-            </p>
-            <div class="developer-links" data-contributor-links>
-              <span class="developer-link" aria-disabled="true">GitHub</span>
-              <span class="developer-link" aria-disabled="true">LinkedIn</span>
-            </div>
-          </article>
-          <article class="developer-card" data-contributor-card>
-            <div class="developer-avatar" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="8" r="3.5"></circle>
-                <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
-              </svg>
-            </div>
-            <h3 class="developer-name" data-contributor-name>Nome do contribuidor</h3>
-            <p class="developer-role" data-contributor-role>Área de atuação</p>
-            <p class="developer-bio" data-contributor-bio>
-              Uma breve apresentação e as principais habilidades de quem contribuiu com o projeto.
-            </p>
-            <div class="developer-links" data-contributor-links>
-              <span class="developer-link" aria-disabled="true">GitHub</span>
-              <span class="developer-link" aria-disabled="true">LinkedIn</span>
-            </div>
-          </article>
-          <article class="developer-card" data-contributor-card>
-            <div class="developer-avatar" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="8" r="3.5"></circle>
-                <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
-              </svg>
-            </div>
-            <h3 class="developer-name" data-contributor-name>Nome do contribuidor</h3>
-            <p class="developer-role" data-contributor-role>Área de atuação</p>
-            <p class="developer-bio" data-contributor-bio>
-              Uma breve apresentação e as principais habilidades de quem contribuiu com o projeto.
-            </p>
-            <div class="developer-links" data-contributor-links>
-              <span class="developer-link" aria-disabled="true">GitHub</span>
-              <span class="developer-link" aria-disabled="true">LinkedIn</span>
-            </div>
-          </article>
-        </div>
+        </template>
         <div class="footer-bottom">
           <p>&copy; 2026 Focus Clínica. Todos os direitos reservados.</p>
           <div class="security-badges">

@@ -3,6 +3,7 @@
   const header = document.querySelector(".main-header");
   const preview = document.querySelector(".product-preview");
   const counters = [...document.querySelectorAll("[data-count]")];
+  if (!header) return;
   const duration = 1500; // Duração da contagem em milissegundos.
   const counted = new WeakSet();
   const countFrames = new WeakMap();
@@ -78,13 +79,17 @@
       ].join(","),
     ),
   ];
-  const targetSet = new Set(targets);
+  const siblingIndexes = new WeakMap();
   const delayStep = 180; // Intervalo entre elementos irmãos, em milissegundos.
   const revealThreshold = 0.12;
   const reveal = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const element = entry.target.parentElement;
+        if (!element) {
+          reveal.unobserve(entry.target);
+          return;
+        }
         if (!entry.isIntersecting) {
           // Só rearma quando o elemento sai por completo, nos dois sentidos.
           if (!element.contains(document.activeElement)) {
@@ -99,10 +104,10 @@
   );
   const anchors = [];
   targets.forEach((element) => {
-    const siblings = [...element.parentElement.children].filter((sibling) =>
-      targetSet.has(sibling),
-    );
-    const delay = Math.min(siblings.indexOf(element), 3) * delayStep;
+    const parent = element.parentElement;
+    const index = siblingIndexes.get(parent) || 0;
+    siblingIndexes.set(parent, index + 1);
+    const delay = Math.min(index, 3) * delayStep;
     element.style.setProperty("--reveal-delay", `${delay}ms`);
     // A contratranslação da âncora mantém a área observada imóvel.
     const anchor = document.createElement("span");
@@ -179,125 +184,168 @@
 
 // Carrosséis mobile com navegação manual, sem reprodução automática ou loop.
 (() => {
-  document.querySelectorAll(".cards-grid-metrics, .connected-cards").forEach((track) => {
-    const metrics = track.classList.contains("cards-grid-metrics");
-    const cards = [...track.children];
-    const mobile = matchMedia("(max-width: 37.5rem)");
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-    const controls = document.createElement("div");
-    controls.className = "metrics-carousel-controls connected-carousel-controls";
-    controls.hidden = true;
-    track.id = metrics ? "metrics-carousel" : "connected-carousel";
-    let animation;
-    let dots;
-    let previous;
-    let next;
+  const mobile = matchMedia("(max-width: 37.5rem)");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  document
+    .querySelectorAll(".cards-grid-metrics, .connected-cards")
+    .forEach((track) => {
+      const metrics = track.classList.contains("cards-grid-metrics");
+      const cards = [...track.children];
+      const controls = document.createElement("div");
+      controls.className =
+        "metrics-carousel-controls connected-carousel-controls";
+      controls.hidden = true;
+      track.id = metrics ? "metrics-carousel" : "connected-carousel";
+      let animation;
+      let dots;
+      let previous;
+      let next;
+      let activeIndex = -1;
+      let controlsFrame = 0;
 
-    const current = () => {
-      const left = track.getBoundingClientRect().left;
-      const distances = cards.map((card) =>
-        Math.abs(card.getBoundingClientRect().left - left),
-      );
-      return distances.reduce(
-        (best, distance, index) => (distance < distances[best] ? index : best),
-        0,
-      );
-    };
-    const updateControls = () => {
-      const active = current();
-      dots.forEach((dot, index) => {
-        if (index === active) dot.setAttribute("aria-current", "true");
-        else dot.removeAttribute("aria-current");
-      });
-      previous.disabled = active === 0;
-      next.disabled = active === cards.length - 1;
-    };
-    const stopAnimation = () => {
-      cancelAnimationFrame(animation);
-      track.classList.remove("is-moving");
-    };
-    const goTo = (index) => {
-      cancelAnimationFrame(animation);
-      index = Math.max(0, Math.min(cards.length - 1, index));
-      const from = track.scrollLeft;
-      const to = Math.max(0, Math.min(
-        track.scrollWidth - track.clientWidth,
-        from + cards[index].getBoundingClientRect().left - track.getBoundingClientRect().left,
-      ));
-      if (reduced.matches) {
-        track.classList.remove("is-moving");
-        track.scrollLeft = to;
-        updateControls();
-        return;
-      }
-      track.classList.add("is-moving");
-      const start = performance.now();
-      const step = (now) => {
-        const progress = Math.min(1, (now - start) / 650);
-        const eased = (1 - Math.cos(Math.PI * progress)) / 2;
-        track.scrollLeft = from + (to - from) * eased;
-        if (progress < 1) animation = requestAnimationFrame(step);
-        else {
-          track.classList.remove("is-moving");
-          updateControls();
-        }
+      const current = () => {
+        const left = track.getBoundingClientRect().left;
+        const distances = cards.map((card) =>
+          Math.abs(card.getBoundingClientRect().left - left),
+        );
+        return distances.reduce(
+          (best, distance, index) =>
+            distance < distances[best] ? index : best,
+          0,
+        );
       };
-      animation = requestAnimationFrame(step);
-    };
-    const addArrow = (direction) => {
-      const arrow = document.createElement("button");
-      arrow.type = "button";
-      arrow.className = "carousel-arrow";
-      arrow.setAttribute("aria-label", direction < 0 ? "Card anterior" : "Próximo card");
-      arrow.setAttribute("aria-controls", track.id);
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("viewBox", "0 0 24 24");
-      svg.setAttribute("aria-hidden", "true");
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", direction < 0 ? "m15 18-6-6 6-6" : "m9 18 6-6-6-6");
-      svg.append(path);
-      arrow.append(svg);
-      arrow.addEventListener("click", () => goTo(current() + direction));
-      controls.append(arrow);
-      return arrow;
-    };
-    previous = addArrow(-1);
-    dots = cards.map((_, index) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "carousel-dot";
-      dot.setAttribute("aria-label", `Mostrar ${metrics ? "métrica" : "card"} ${index + 1} de ${cards.length}`);
-      dot.setAttribute("aria-controls", track.id);
-      dot.addEventListener("click", () => goTo(index));
-      controls.append(dot);
-      return dot;
+      const updateControls = () => {
+        const active = current();
+        if (active === activeIndex) return;
+        activeIndex = active;
+        dots.forEach((dot, index) => {
+          if (index === active) dot.setAttribute("aria-current", "true");
+          else dot.removeAttribute("aria-current");
+        });
+        previous.disabled = active === 0;
+        next.disabled = active === cards.length - 1;
+      };
+      const scheduleControls = () => {
+        if (controlsFrame) return;
+        controlsFrame = requestAnimationFrame(() => {
+          controlsFrame = 0;
+          updateControls();
+        });
+      };
+      const stopAnimation = () => {
+        cancelAnimationFrame(animation);
+        track.classList.remove("is-moving");
+      };
+      const goTo = (index) => {
+        cancelAnimationFrame(animation);
+        index = Math.max(0, Math.min(cards.length - 1, index));
+        const from = track.scrollLeft;
+        const to = Math.max(
+          0,
+          Math.min(
+            track.scrollWidth - track.clientWidth,
+            from +
+              cards[index].getBoundingClientRect().left -
+              track.getBoundingClientRect().left,
+          ),
+        );
+        if (reduced.matches) {
+          track.classList.remove("is-moving");
+          track.scrollLeft = to;
+          updateControls();
+          return;
+        }
+        track.classList.add("is-moving");
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min(1, (now - start) / 650);
+          const eased = (1 - Math.cos(Math.PI * progress)) / 2;
+          track.scrollLeft = from + (to - from) * eased;
+          if (progress < 1) animation = requestAnimationFrame(step);
+          else {
+            track.classList.remove("is-moving");
+            updateControls();
+          }
+        };
+        animation = requestAnimationFrame(step);
+      };
+      const addArrow = (direction) => {
+        const arrow = document.createElement("button");
+        arrow.type = "button";
+        arrow.className = "carousel-arrow";
+        arrow.setAttribute(
+          "aria-label",
+          direction < 0 ? "Card anterior" : "Próximo card",
+        );
+        arrow.setAttribute("aria-controls", track.id);
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg",
+        );
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("aria-hidden", "true");
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path",
+        );
+        path.setAttribute(
+          "d",
+          direction < 0 ? "m15 18-6-6 6-6" : "m9 18 6-6-6-6",
+        );
+        svg.append(path);
+        arrow.append(svg);
+        arrow.addEventListener("click", () => goTo(current() + direction));
+        controls.append(arrow);
+        return arrow;
+      };
+      previous = addArrow(-1);
+      dots = cards.map((_, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel-dot";
+        dot.setAttribute(
+          "aria-label",
+          `Mostrar ${metrics ? "métrica" : "card"} ${index + 1} de ${cards.length}`,
+        );
+        dot.setAttribute("aria-controls", track.id);
+        dot.addEventListener("click", () => goTo(index));
+        controls.append(dot);
+        return dot;
+      });
+      next = addArrow(1);
+      track.after(controls);
+      const sync = () => {
+        stopAnimation();
+        controls.hidden = !mobile.matches;
+        if (mobile.matches) {
+          track.setAttribute("role", "region");
+          track.setAttribute("aria-roledescription", "carrossel");
+          track.setAttribute(
+            "aria-label",
+            metrics
+              ? "Impacto em números"
+              : "Recursos para a rotina da clínica",
+          );
+          track.tabIndex = 0;
+        } else {
+          ["role", "aria-roledescription", "aria-label", "tabindex"].forEach(
+            (name) => track.removeAttribute(name),
+          );
+          track.scrollLeft = 0;
+        }
+        updateControls();
+      };
+      track.addEventListener("scroll", scheduleControls, { passive: true });
+      track.addEventListener("keydown", (event) => {
+        if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key))
+          return;
+        event.preventDefault();
+        goTo(current() + (event.key === "ArrowRight" ? 1 : -1));
+      });
+      track.addEventListener("pointerdown", stopAnimation, { passive: true });
+      window.addEventListener("resize", scheduleControls, { passive: true });
+      mobile.addEventListener("change", sync);
+      reduced.addEventListener("change", sync);
+      sync();
     });
-    next = addArrow(1);
-    track.after(controls);
-    const sync = () => {
-      stopAnimation();
-      controls.hidden = !mobile.matches;
-      if (mobile.matches) {
-        track.setAttribute("role", "region");
-        track.setAttribute("aria-roledescription", "carrossel");
-        track.setAttribute("aria-label", metrics ? "Impacto em números" : "Recursos para a rotina da clínica");
-        track.tabIndex = 0;
-      } else {
-        ["role", "aria-roledescription", "aria-label", "tabindex"].forEach((name) => track.removeAttribute(name));
-        track.scrollLeft = 0;
-      }
-      updateControls();
-    };
-    track.addEventListener("scroll", updateControls, { passive: true });
-    track.addEventListener("keydown", (event) => {
-      if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-      event.preventDefault();
-      goTo(current() + (event.key === "ArrowRight" ? 1 : -1));
-    });
-    track.addEventListener("pointerdown", stopAnimation, { passive: true });
-    window.addEventListener("resize", updateControls, { passive: true });
-    mobile.addEventListener("change", sync);
-    reduced.addEventListener("change", sync);
-    sync();
-  });
 })();
