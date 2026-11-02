@@ -174,197 +174,222 @@
   });
 })();
 
-// Somente as métricas curtas usam carrossel; leitura longa e formulários seguem estáticos.
+// Carrosséis mobile: métricas automáticas e cards complementares com navegação manual.
 (() => {
-  const track = document.querySelector(".cards-grid-metrics");
-  if (!track) return;
-  const cards = [...track.children];
-  const mobile = matchMedia("(max-width: 37.5rem)");
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const controls = document.createElement("div");
-  controls.className = "metrics-carousel-controls";
-  controls.hidden = true;
-  track.id = "metrics-carousel";
-  const pause = document.createElement("button");
-  pause.type = "button";
-  pause.setAttribute("aria-controls", track.id);
-  controls.append(pause);
-  const dots = cards.map((_, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "carousel-dot";
-    dot.setAttribute(
-      "aria-label",
-      `Mostrar métrica ${index + 1} de ${cards.length}`,
-    );
-    dot.setAttribute("aria-controls", track.id);
-    dot.addEventListener("click", () => {
-      goTo(index);
-      schedule();
-    });
-    controls.append(dot);
-    return dot;
-  });
-  track.after(controls);
-  let timer;
-  let animation;
-  let paused = false;
-  let interacting = false;
-  let hovering = false;
-  let visible = false;
-  const current = () => {
-    const left = track.getBoundingClientRect().left;
-    const distances = cards.map((card) =>
-      Math.abs(card.getBoundingClientRect().left - left),
-    );
-    return distances.reduce(
-      (best, distance, index) => (distance < distances[best] ? index : best),
-      0,
-    );
-  };
-  const updateDots = () => {
-    const activeIndex = current();
-    dots.forEach((dot, index) => {
-      if (index === activeIndex) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
-    });
-  };
-  const stopAnimation = () => {
-    cancelAnimationFrame(animation);
-    track.classList.remove("is-moving");
-  };
-  function goTo(index) {
-    stopAnimation();
-    const from = track.scrollLeft;
-    const to = Math.min(
-      track.scrollWidth - track.clientWidth,
-      from +
-        cards[index].getBoundingClientRect().left -
-        track.getBoundingClientRect().left,
-    );
-    if (reduced.matches) {
-      track.scrollLeft = to;
-      updateDots();
-      return;
-    }
-    track.classList.add("is-moving");
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min(1, (now - start) / 500);
-      track.scrollLeft = from + (to - from) * (1 - Math.pow(1 - progress, 3));
-      if (progress < 1) animation = requestAnimationFrame(step);
-      else {
-        track.classList.remove("is-moving");
-        updateDots();
-      }
+  document.querySelectorAll(".cards-grid-metrics, .connected-cards").forEach((track) => {
+    const automatic = track.classList.contains("cards-grid-metrics");
+    const cards = [...track.children];
+    const mobile = matchMedia("(max-width: 37.5rem)");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const controls = document.createElement("div");
+    controls.className = automatic
+      ? "metrics-carousel-controls"
+      : "metrics-carousel-controls connected-carousel-controls";
+    controls.hidden = true;
+    track.id = automatic ? "metrics-carousel" : "connected-carousel";
+    const pause = document.createElement("button");
+    pause.type = "button";
+    pause.setAttribute("aria-controls", track.id);
+    if (automatic) controls.append(pause);
+    const addArrow = (direction) => {
+      const arrow = document.createElement("button");
+      arrow.type = "button";
+      arrow.className = "carousel-arrow";
+      arrow.setAttribute("aria-label", direction < 0 ? "Card anterior" : "Próximo card");
+      arrow.setAttribute("aria-controls", track.id);
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("aria-hidden", "true");
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", direction < 0 ? "m15 18-6-6 6-6" : "m9 18 6-6-6-6");
+      svg.append(path);
+      arrow.append(svg);
+      arrow.addEventListener("click", () => {
+        goTo((current() + direction + cards.length) % cards.length);
+        schedule();
+      });
+      controls.append(arrow);
     };
-    animation = requestAnimationFrame(step);
-  }
-  function schedule() {
-    clearTimeout(timer);
-    if (
-      !mobile.matches ||
-      reduced.matches ||
-      paused ||
-      interacting ||
-      hovering ||
-      !visible ||
-      document.hidden ||
-      track.contains(document.activeElement) ||
-      controls.contains(document.activeElement)
-    )
-      return;
-    timer = setTimeout(() => {
-      goTo((current() + 1) % cards.length);
-      schedule();
-    }, 7000);
-  }
-  const sync = () => {
-    stopAnimation();
-    controls.hidden = !mobile.matches;
-    pause.textContent = paused || reduced.matches ? "Reproduzir" : "Pausar";
-    pause.disabled = reduced.matches;
-    pause.setAttribute(
-      "aria-label",
-      reduced.matches
-        ? "Reprodução automática desativada pela preferência de movimento reduzido"
-        : `${paused ? "Reproduzir" : "Pausar"} métricas automaticamente`,
-    );
-    if (mobile.matches) {
-      track.setAttribute("role", "region");
-      track.setAttribute("aria-roledescription", "carrossel");
-      track.setAttribute("aria-label", "Impacto em números");
-      track.tabIndex = 0;
-    } else {
-      track.removeAttribute("role");
-      track.removeAttribute("aria-roledescription");
-      track.removeAttribute("aria-label");
-      track.removeAttribute("tabindex");
-      track.scrollLeft = 0;
+    if (!automatic) addArrow(-1);
+    const dots = cards.map((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute(
+        "aria-label",
+        `Mostrar ${automatic ? "métrica" : "card"} ${index + 1} de ${cards.length}`,
+      );
+      dot.setAttribute("aria-controls", track.id);
+      dot.addEventListener("click", () => {
+        goTo(index);
+        schedule();
+      });
+      controls.append(dot);
+      return dot;
+    });
+    if (!automatic) addArrow(1);
+    track.after(controls);
+    let timer;
+    let animation;
+    let paused = false;
+    let interacting = false;
+    let hovering = false;
+    let visible = false;
+    const current = () => {
+      const left = track.getBoundingClientRect().left;
+      const distances = cards.map((card) =>
+        Math.abs(card.getBoundingClientRect().left - left),
+      );
+      return distances.reduce(
+        (best, distance, index) => (distance < distances[best] ? index : best),
+        0,
+      );
+    };
+    const updateDots = () => {
+      const activeIndex = current();
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
+    const stopAnimation = () => {
+      cancelAnimationFrame(animation);
+      track.classList.remove("is-moving");
+    };
+    function goTo(index) {
+      stopAnimation();
+      const from = track.scrollLeft;
+      const to = Math.min(
+        track.scrollWidth - track.clientWidth,
+        from +
+          cards[index].getBoundingClientRect().left -
+          track.getBoundingClientRect().left,
+      );
+      if (reduced.matches) {
+        track.scrollLeft = to;
+        updateDots();
+        return;
+      }
+      track.classList.add("is-moving");
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min(1, (now - start) / 500);
+        track.scrollLeft = from + (to - from) * (1 - Math.pow(1 - progress, 3));
+        if (progress < 1) animation = requestAnimationFrame(step);
+        else {
+          track.classList.remove("is-moving");
+          updateDots();
+        }
+      };
+      animation = requestAnimationFrame(step);
     }
-    updateDots();
-    schedule();
-  };
-  pause.addEventListener("click", () => {
-    paused = !paused;
-    sync();
-  });
-  track.addEventListener(
-    "scroll",
-    () => {
+    function schedule() {
+      clearTimeout(timer);
+      if (
+        !automatic ||
+        !mobile.matches ||
+        reduced.matches ||
+        paused ||
+        interacting ||
+        hovering ||
+        !visible ||
+        document.hidden ||
+        track.contains(document.activeElement) ||
+        controls.contains(document.activeElement)
+      )
+        return;
+      timer = setTimeout(() => {
+        goTo((current() + 1) % cards.length);
+        schedule();
+      }, 7000);
+    }
+    const sync = () => {
+      stopAnimation();
+      controls.hidden = !mobile.matches;
+      pause.textContent = paused || reduced.matches ? "Reproduzir" : "Pausar";
+      pause.disabled = reduced.matches;
+      pause.setAttribute(
+        "aria-label",
+        reduced.matches
+          ? "Reprodução automática desativada pela preferência de movimento reduzido"
+          : `${paused ? "Reproduzir" : "Pausar"} métricas automaticamente`,
+      );
+      if (mobile.matches) {
+        track.setAttribute("role", "region");
+        track.setAttribute("aria-roledescription", "carrossel");
+        track.setAttribute("aria-label", automatic ? "Impacto em números" : "Recursos para a rotina da clínica");
+        track.tabIndex = 0;
+      } else {
+        track.removeAttribute("role");
+        track.removeAttribute("aria-roledescription");
+        track.removeAttribute("aria-label");
+        track.removeAttribute("tabindex");
+        track.scrollLeft = 0;
+      }
       updateDots();
       schedule();
-    },
-    { passive: true },
-  );
-  track.addEventListener("keydown", (event) => {
-    if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key))
-      return;
-    event.preventDefault();
-    goTo(
-      (current() + (event.key === "ArrowRight" ? 1 : cards.length - 1)) %
-        cards.length,
-    );
-    schedule();
-  });
-  track.addEventListener("pointerdown", () => {
-    interacting = true;
-    stopAnimation();
-    schedule();
-  });
-  const endInteraction = () => {
-    interacting = false;
-    schedule();
-  };
-  window.addEventListener("pointerup", endInteraction, { passive: true });
-  window.addEventListener("pointercancel", endInteraction, { passive: true });
-  track.addEventListener("pointerenter", (event) => {
-    if (event.pointerType === "mouse") {
-      hovering = true;
-      schedule();
-    }
-  });
-  track.addEventListener("pointerleave", (event) => {
-    if (event.pointerType === "mouse") {
-      hovering = false;
-      schedule();
-    }
-  });
-  [track, controls].forEach((element) => {
-    element.addEventListener("focusin", schedule);
-    element.addEventListener("focusout", () => queueMicrotask(schedule));
-  });
-  document.addEventListener("visibilitychange", schedule);
-  mobile.addEventListener("change", sync);
-  reduced.addEventListener("change", sync);
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(
-      (entries) => {
-        visible = entries[0].isIntersecting;
+    };
+    pause.addEventListener("click", () => {
+      paused = !paused;
+      sync();
+    });
+    track.addEventListener(
+      "scroll",
+      () => {
+        updateDots();
         schedule();
       },
-      { threshold: 0.25 },
-    ).observe(track);
-  }
-  sync();
+      { passive: true },
+    );
+    track.addEventListener("keydown", (event) => {
+      if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key))
+        return;
+      event.preventDefault();
+      goTo(
+        (current() + (event.key === "ArrowRight" ? 1 : cards.length - 1)) %
+          cards.length,
+      );
+      schedule();
+    });
+    track.addEventListener("pointerdown", () => {
+      interacting = true;
+      stopAnimation();
+      schedule();
+    });
+    const endInteraction = () => {
+      interacting = false;
+      schedule();
+    };
+    window.addEventListener("pointerup", endInteraction, { passive: true });
+    window.addEventListener("pointercancel", endInteraction, { passive: true });
+    track.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") {
+        hovering = true;
+        schedule();
+      }
+    });
+    track.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse") {
+        hovering = false;
+        schedule();
+      }
+    });
+    [track, controls].forEach((element) => {
+      element.addEventListener("focusin", schedule);
+      element.addEventListener("focusout", () => queueMicrotask(schedule));
+    });
+    document.addEventListener("visibilitychange", schedule);
+    mobile.addEventListener("change", sync);
+    reduced.addEventListener("change", sync);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => {
+          visible = entries[0].isIntersecting;
+          schedule();
+        },
+        { threshold: 0.25 },
+      ).observe(track);
+    }
+    sync();
+  });
 })();

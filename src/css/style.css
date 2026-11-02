@@ -714,6 +714,44 @@ main>section,
   transform: scale(1.25);
 }
 
+.connected-carousel-controls .carousel-dot::before {
+  border-radius: 1rem;
+  transition:
+    width var(--transition-button),
+    background-color var(--transition-button);
+}
+
+.connected-carousel-controls .carousel-dot[aria-current="true"]::before {
+  width: 1.5rem;
+  transform: none;
+}
+
+.connected-carousel-controls .carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--outline-variant);
+  border-radius: 50%;
+  transition:
+    background-color var(--transition-button),
+    border-color var(--transition-button);
+}
+
+.connected-carousel-controls .carousel-arrow:is(:hover, :focus-visible) {
+  background-color: var(--secondary-container);
+  border-color: var(--primary);
+}
+
+.carousel-arrow svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .metrics-overview .card {
   background: var(--color-surface-glass);
   padding: clamp(1.25rem, 2.5vw, 2rem);
@@ -1858,6 +1896,9 @@ main>section,
 }
 
 .reminder-example {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   background: var(--secondary-container);
   margin-top: auto;
   box-shadow: 0 0.5rem 0.875rem color-mix(in srgb, var(--shadow) 9%, transparent);
@@ -1870,7 +1911,8 @@ main>section,
 
 .reminder-example>span {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: auto;
+  align-self: flex-start;
   font-size: 0.5625rem;
 }
 
