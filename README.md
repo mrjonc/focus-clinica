@@ -249,7 +249,6 @@ focus-clinica/
 ├── tests/
 │   └── github-profiles.test.cjs # Testes do serviço da API
 ├── index.html
-├── netlify.toml                # Configuração alternativa de deploy estático
 └── README.md
 ```
 
@@ -327,10 +326,6 @@ registradas. A existência de atributos ARIA não substitui uma auditoria comple
 O endereço da plataforma é o destino do formulário validado e do botão de acesso.
 A landing page possui seu próprio endereço. A data de publicação ainda não está
 registrada nesta documentação.
-
-`netlify.toml` também permite publicar a raiz do projeto como um site estático
-independente, sem comando de build. Não substitua o deploy da plataforma por
-estes arquivos.
 
 Fluxo previsto: branch por tarefa → commits claros → push → pull request →
 revisão/aprovação → merge → deploy. O histórico contém PRs e merges; a documentação

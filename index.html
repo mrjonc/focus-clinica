@@ -14,11 +14,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     />
-    <link rel="stylesheet" href="src/css/style.css?v=20261102-refactor" />
-    <link rel="stylesheet" href="src/css/responsive.css?v=20261102-refactor" />
+    <link rel="stylesheet" href="src/css/style.css?v=20261102-footer-type" />
+    <link rel="stylesheet" href="src/css/responsive.css?v=20261102-footer-type" />
     <script src="src/js/navigation.js?v=20261102-refactor" defer></script>
-    <script src="src/js/roi-calculator.js?v=20261102-refactor" defer></script>
-    <script src="src/js/page-effects.js?v=20261102-refactor" defer></script>
+    <script src="src/js/roi-calculator.js?v=20261102-first-visit" defer></script>
+    <script src="src/js/page-effects.js?v=20261102-content-fade" defer></script>
     <script src="src/js/team-members.js?v=20261102-refactor" defer></script>
     <script src="src/js/github-profiles.js?v=20261102-refactor" defer></script>
     <script src="src/js/team.js?v=20261102-refactor" defer></script>
@@ -266,11 +266,13 @@
 
       <!-- 01 / IMPACTO EM NÚMEROS -->
       <section class="metrics-overview">
-        <span class="section-tag">01 / Impacto em números</span>
-        <h2>
-          Tecnologia para simplificar a rotina.
-          <span>Cuidado para transformar a experiência.</span>
-        </h2>
+        <header class="section-header">
+          <span class="section-tag">01 / Impacto em números</span>
+          <h2>
+            Tecnologia para simplificar a rotina.
+            <span>Cuidado para transformar a experiência.</span>
+          </h2>
+        </header>
         <div class="cards-grid-metrics">
           <article class="card">
             <div class="card-results">
@@ -355,21 +357,22 @@
       <!-- 02 / SOBRE A FOCUS -->
       <section id="sobre" class="about-section">
         <div class="about-content">
-          <span class="section-tag">02 / Sobre a Focus</span>
-          <h2>
-            Sua vocação é cuidar.<br />
-            A nossa é facilitar.
-          </h2>
-          <p>
-            A rotina de uma clínica não precisa disputar atenção com seus
-            pacientes. A Focus Clínica conecta cada detalhe para que sua equipe
-            trabalhe com mais clareza e tranquilidade.
-          </p>
-          <p>
-            Chega de informações espalhadas, confirmações manuais e decisões no
-            escuro. Uma única plataforma, do agendamento ao resultado
-            financeiro.
-          </p>
+          <header class="section-header">
+            <span class="section-tag">02 / Sobre a Focus</span>
+            <h2>
+              Sua vocação é cuidar. A nossa é facilitar.
+            </h2>
+            <p>
+              A rotina de uma clínica não precisa disputar atenção com seus
+              pacientes. A Focus Clínica conecta cada detalhe para que sua equipe
+              trabalhe com mais clareza e tranquilidade.
+            </p>
+            <p>
+              Chega de informações espalhadas, confirmações manuais e decisões no
+              escuro. Uma única plataforma, do agendamento ao resultado
+              financeiro.
+            </p>
+          </header>
           <div class="timeline-grid">
             <div class="timeline-item">
               <span class="timeline-icon"
@@ -452,7 +455,7 @@
             <div class="roi-label">
               <label for="roi-consultations">Consultas por dia</label
               ><output for="roi-consultations" id="roi-consultations-value"
-                >12 por médico</output
+                >12/médico</output
               >
             </div>
             <input

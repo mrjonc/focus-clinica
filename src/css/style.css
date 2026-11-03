@@ -661,28 +661,6 @@ main > section,
   padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 4rem);
 }
 
-.about-section .section-tag {
-  margin-bottom: 0.75rem;
-}
-
-.metrics-overview .section-tag {
-  margin-bottom: 2rem;
-}
-
-.metrics-overview h2 {
-  font-family: var(--font-titulo);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 600;
-  color: var(--surface-variant);
-  max-width: 60rem;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.metrics-overview h2 span {
-  display: block;
-}
-
 .cards-grid-metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
@@ -837,23 +815,6 @@ main > section,
 .roi-header > *,
 .timeline-item > * {
   min-width: 0;
-}
-
-.about-content h2 {
-  font-family: var(--font-titulo);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-  color: var(--on-surface);
-  margin: 1.25rem 0;
-}
-
-.about-content > p {
-  color: var(--surface-variant);
-  font-size: 1.125rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
 }
 
 .timeline-grid {
@@ -1273,23 +1234,8 @@ main > section,
   color: var(--surface-variant);
 }
 
-.overview-section .section-header h2 {
-  font-family: var(--font-titulo);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.04em;
-  color: var(--on-surface);
-  margin: 1.125rem 0;
-}
-
 .overview-section .section-header h2 span {
   color: var(--primary);
-}
-
-.overview-section .section-header > p {
-  font-size: 0.875rem;
-  line-height: 1.65;
 }
 
 .features-nav {
@@ -2088,21 +2034,6 @@ main > section,
   color: var(--surface-variant);
 }
 
-.modules-section .section-header h2 {
-  color: var(--on-surface);
-  font-family: var(--font-titulo);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  line-height: 1.2;
-  letter-spacing: -0.035em;
-  font-weight: 600;
-  margin: 1.125rem 0;
-}
-
-.modules-section .section-header > p {
-  font-size: 1.125rem;
-  line-height: 1.6;
-}
-
 .modulos-preview {
   margin-top: 2.5rem;
   border: 0.0625rem solid #e3e8ef;
@@ -2371,21 +2302,6 @@ main > section,
   );
 }
 
-.comparison-section h2 {
-  margin: 1.375rem 0 1.25rem;
-  color: var(--on-surface);
-  font-family: var(--font-titulo);
-  font-size: clamp(1.75rem, 3vw, 2.625rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.04em;
-}
-
-.comparison-section .section-header > p {
-  font-size: 1.25rem;
-  line-height: 1.6;
-}
-
 .comparison-container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2508,18 +2424,6 @@ main > section,
   margin-inline: auto;
   padding: 5rem 2.1875rem 3rem;
   color: var(--surface-variant);
-}
-
-.impact-section .section-header h2 {
-  margin: 1.375rem 0 1.25rem;
-  color: var(--on-surface);
-  font: 700 clamp(1.75rem, 3vw, 2.625rem) / 1.25 var(--font-titulo);
-  letter-spacing: -0.04em;
-}
-
-.impact-section .section-header > p {
-  font-size: 1.125rem;
-  line-height: 1.6;
 }
 
 .impacto-grid {
@@ -3159,12 +3063,12 @@ main > section,
 .nav-column ul {
   display: grid;
   gap: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
 }
 
 .footer-nav .nav-column a {
-  color: var(--surface-variant);
-  font-size: 0.8125rem;
-  line-height: 1.6;
+  color: inherit;
 }
 
 .main-footer a:hover {
@@ -3497,4 +3401,30 @@ a.developer-link:active {
   .developer-card-loading * {
     animation: none;
   }
+}
+
+/* Cabeçalhos das seções numeradas. */
+main .section-header > h2 {
+  margin: 1rem 0;
+  color: var(--on-surface);
+  font-family: var(--font-titulo);
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+main .section-header > p {
+  color: var(--surface-variant);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+main .section-header > p + p {
+  margin-top: 1rem;
+}
+
+.metrics-overview > .section-header,
+.about-content > .section-header {
+  margin-bottom: 1.5rem;
 }

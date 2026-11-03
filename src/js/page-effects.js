@@ -5,8 +5,6 @@
   const counters = [...document.querySelectorAll("[data-count]")];
   if (!header) return;
   const duration = 1500; // Duração da contagem em milissegundos.
-  const counted = new WeakSet();
-  const countFrames = new WeakMap();
   let headerHeight;
   let previewHeight;
 
@@ -42,24 +40,16 @@
   // O HTML já contém os valores finais e permanece visível sem suporte ao observer.
   if (!("IntersectionObserver" in window)) return;
 
-  // Alvos pequenos: cada título, texto e card entra separadamente.
-  // Não observar uma seção inteira evita revelar tudo ao mesmo tempo.
+  // Anima a entrada do conteúdo. Controles interativos mantêm as próprias transições.
   const targets = [
     ...document.querySelectorAll(
       [
         ".hero-content > :not(.hero-actions)",
-        ".hero-actions > *",
         ".image-doctor",
-        ".metrics-overview > .section-tag",
-        ".metrics-overview > h2",
         ".cards-grid-metrics > .card",
-        ".about-content > .section-tag",
-        ".about-content > h2",
-        ".about-content > p",
         ".timeline-item",
         ".roi-calculator",
         "main .section-header > *",
-        ".features-nav > .nav-item",
         ".feature-text > .sub-tag",
         ".feature-text > h3",
         ".feature-text > p",
@@ -90,13 +80,9 @@
           reveal.unobserve(entry.target);
           return;
         }
-        if (!entry.isIntersecting) {
-          // Só rearma quando o elemento sai por completo, nos dois sentidos.
-          if (!element.contains(document.activeElement)) {
-            element.classList.add("reveal-pending");
-          }
-        } else if (entry.intersectionRatio >= revealThreshold) {
+        if (entry.isIntersecting && entry.intersectionRatio >= revealThreshold) {
           element.classList.remove("reveal-pending");
+          reveal.unobserve(entry.target);
         }
       });
     },
@@ -121,6 +107,7 @@
     element.addEventListener("focusin", () => {
       element.classList.add("reveal-focused");
       element.classList.remove("reveal-pending");
+      reveal.unobserve(anchor);
     });
     element.addEventListener("focusout", (event) => {
       if (!element.contains(event.relatedTarget))
@@ -137,23 +124,12 @@
 
   // Observa o próprio número: a contagem não depende das âncoras de revelação
   // nem da preferência de movimento (os deslocamentos continuam sob controle do CSS).
-  const mobileCounters = matchMedia("(max-width: 37.5rem)");
   const countObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const element = entry.target;
-        if (mobileCounters.matches && counted.has(element)) return;
-        if (!entry.isIntersecting) {
-          const frame = countFrames.get(element);
-          if (frame !== undefined) cancelAnimationFrame(frame);
-          countFrames.delete(element);
-          counted.delete(element);
-          element.textContent = format(element, 0);
-          return;
-        }
-        if (entry.intersectionRatio < 0.5 || counted.has(element)) return;
-        counted.add(element);
-        if (mobileCounters.matches) countObserver.unobserve(element);
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
+        countObserver.unobserve(element);
         const card = element.closest(".card");
         const delay = card
           ? parseFloat(
@@ -166,11 +142,9 @@
           const eased = 1 - Math.pow(1 - progress, 3);
           const text = format(element, Number(element.dataset.count) * eased);
           if (element.textContent !== text) element.textContent = text;
-          if (progress < 1)
-            countFrames.set(element, requestAnimationFrame(tick));
-          else countFrames.delete(element);
+          if (progress < 1) requestAnimationFrame(tick);
         };
-        countFrames.set(element, requestAnimationFrame(tick));
+        requestAnimationFrame(tick);
       });
     },
     { threshold: [0, 0.5] },
