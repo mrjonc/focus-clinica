@@ -4,7 +4,6 @@
 
   const doctors = calculator.elements.doctors;
   const consultations = calculator.elements.consultations;
-  const desktopViewport = window.matchMedia("(min-width: 62.0001rem)");
   const outputs = Object.fromEntries(
     [
       "doctors-value",
@@ -59,13 +58,8 @@
     const doctorsText = quantity(doctorCount, "médico", "médicos");
     outputs["doctors-value"].value = doctorsText;
     doctors.setAttribute("aria-valuetext", doctorsText);
-    const consultationsSuffix = desktopViewport.matches
-      ? dailyConsultations === 1
-        ? "/médico"
-        : "/médicos"
-      : " por médico";
     outputs["consultations-value"].value =
-      `${numberFormat.format(dailyConsultations)}${consultationsSuffix}`;
+      `${numberFormat.format(dailyConsultations)}/médico`;
     consultationsLabel.textContent =
       dailyConsultations === 1 ? "Consulta por dia" : "Consultas por dia";
     consultations.setAttribute(
@@ -85,7 +79,6 @@
   }
 
   calculator.addEventListener("input", update);
-  desktopViewport.addEventListener("change", update);
   calculator.addEventListener("submit", (event) => event.preventDefault());
   update();
 })();
